@@ -12,7 +12,7 @@
 .hero-section {
     position: relative;
     height: 60vh;
-    background: url('assets/hero-bg.jpg') no-repeat center center/cover;
+    /* background: url('assets/hero-bg.jpg') no-repeat center center/cover; */
     /* Фоново изображение */
     display: flex;
     flex-direction: column;
