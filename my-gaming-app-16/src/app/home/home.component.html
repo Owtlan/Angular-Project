@@ -9,20 +9,10 @@
     <section class="featured-games">
         <h2>Featured Games</h2>
         <div class="game-grid">
-            <div class="game-card">
-                <img src="/assets/counter-strike.jpg" alt="Game 1" />
-                <h3>Counter Strike</h3>
-                <p>A futuristic battle awaits you!</p>
-            </div>
-            <div class="game-card">
-                <img src="assets/ufc5.jpg" alt="Game 2" />
-                <h3>UFC 5</h3>
-                <p>Fight for honor!</p>
-            </div>
-            <div class="game-card">
-                <img src="assets/World-of-Warcraft.jpg" alt="Game 3" />
-                <h3>World-of-Warcraft</h3>
-                <p>Get back in the fight as you defend Azeroth from the shadows below.</p>
+            <div class="game-card" *ngFor="let game of games">
+                <img [src]="game.imageUrl" alt="{{ game.title }}" />
+                <h3>{{ game.title }}</h3>
+                <p>{{ game.description }}</p>
             </div>
         </div>
     </section>

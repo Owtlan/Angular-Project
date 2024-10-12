@@ -15,10 +15,9 @@
                 </ul>
             </li>
 
-
-
             <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
             <li *ngIf="!isLoggedIn"><a routerLink="/register">Register</a></li>
+            <li *ngIf="isLoggedIn"><a routerLink="/create">Create</a></li>
             <li *ngIf="isLoggedIn"><a (click)="logout()" routerLink="/login">logout</a></li>
         </ul>
         <div class="search">

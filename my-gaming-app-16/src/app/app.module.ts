@@ -12,8 +12,11 @@ import { RouterModule } from '@angular/router';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideStorage, getStorage } from '@angular/fire/storage'; // Импорт на Storage
+
 import { environment } from '../environments/environment';
 import { LogoutComponent } from './user/logout/logout.component';
+import { CreateComponent } from './create/create.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { LogoutComponent } from './user/logout/logout.component';
     LoginComponent,
     HomeComponent,
     LogoutComponent,
+    CreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +36,7 @@ import { LogoutComponent } from './user/logout/logout.component';
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), 
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()), // Добави Storage
   ],
   providers: [],
   bootstrap: [AppComponent]
