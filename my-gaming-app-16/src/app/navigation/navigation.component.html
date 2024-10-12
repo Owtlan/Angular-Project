@@ -3,6 +3,8 @@
         <a class="logo" routerLink="/">GameZone</a>
         <ul class="nav-links">
             <li><a routerLink="">Home</a></li>
+
+            <li *ngIf="isLoggedIn" class="dropdown">
             <li class="dropdown">
                 <a routerLink="#games">Games</a>
                 <ul class="dropdown-menu">
@@ -12,10 +14,12 @@
                     <li><a routerLink="#rpg">RPG</a></li>
                 </ul>
             </li>
-            <li><a routerLink="/about">About Us</a></li>
-            <li><a routerLink="/contact">Contact</a></li>
-            <li><a routerLink="/register">Register</a></li> <!-- Убедете се, че това е routerLink -->
-            <li><a routerLink="/login">Login</a></li>
+
+
+
+            <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
+            <li *ngIf="!isLoggedIn"><a routerLink="/register">Register</a></li>
+            <li *ngIf="isLoggedIn"><a (click)="logout()" routerLink="/login">logout</a></li>
         </ul>
         <div class="search">
             <input type="text" placeholder="Search games...">

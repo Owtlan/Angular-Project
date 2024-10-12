@@ -13,6 +13,7 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { LogoutComponent } from './user/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -21,15 +22,16 @@ import { environment } from '../environments/environment';
     RegisterComponent,
     LoginComponent,
     HomeComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule, // За ngModel
     RouterModule,
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), // Инициализиране на Firebase
-    provideAuth(() => getAuth()), // Firebase Authentication модул
-    provideFirestore(() => getFirestore()), // Firestore модул
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), 
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent]
