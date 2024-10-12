@@ -1,19 +1,39 @@
-<form (ngSubmit)="addGame()">
-    <label for="title">Title:</label>
-    <input type="text" id="title" [(ngModel)]="title" name="title" required />
+<div class="create-container animate__animated animate__zoomInRight animate__delay-0.5s">
+    <h1>Create a New Game</h1>
 
-    <label for="description">Description:</label>
-    <textarea id="description" [(ngModel)]="description" name="description" required></textarea>
+    <form (ngSubmit)="addGame()" #gameForm="ngForm">
+        <div class="form-group">
+            <label for="title">Game Title:</label>
+            <input type="text" id="title" [(ngModel)]="title" name="title" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" [(ngModel)]="description" name="description" required></textarea>
+        </div>
 
-    <label for="price">Price:</label>
-    <input type="number" id="price" [(ngModel)]="price" name="price" required />
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" id="price" [(ngModel)]="price" name="price" required>
+        </div>
 
-    <label for="category">Category:</label>
-    <input type="text" id="category" [(ngModel)]="category" name="category" required />
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <select id="category" [(ngModel)]="category" name="category" required>
+                <option value="" disabled selected>Select a category</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Puzzle">Puzzle</option>
+                <option value="RPG">RPG</option>
+                <!-- Add more categories as needed -->
+            </select>
+        </div>
 
-    <label for="imageUrl">Image URL:</label>
-    <input type="text" id="imageUrl" [(ngModel)]="imageUrl" name="imageUrl" required />
-    <!-- Поле за URL на изображението -->
+        <div class="form-group">
+            <label for="imageUrl">Image URL:</label>
+            <input type="text" id="imageUrl" [(ngModel)]="imageUrl" name="imageUrl" required>
+        </div>
 
-    <button type="submit">Add Game</button>
-</form>
+        <button type="submit" class="submit-button">Create Game</button>
+    </form>
+</div>
