@@ -15,6 +15,11 @@ export class RegisterComponent {
   password: string = '';
   username: string = '';
 
+  animateUsername: boolean = false;
+  animateEmail: boolean = false;
+  animatePassword: boolean = false;
+
+
   constructor(private auth: Auth, private firestore: Firestore, private router: Router) { }
 
   register() {
@@ -37,4 +42,24 @@ export class RegisterComponent {
         console.error('Error registering user: ', error);
       });
   }
+
+  animateField(field: string) {
+    if (field === 'username') {
+      this.animateUsername = true;
+    } else if (field === 'email') {
+      this.animateEmail = true;
+    } else if (field === 'password') {
+      this.animatePassword = true;
+    }
+  }
+  removeAnimation(field: string) {
+    if (field === 'username') {
+      this.animateUsername = false;
+    } else if (field === 'email') {
+      this.animateEmail = false;
+    } else if (field === 'password') {
+      this.animatePassword = false;
+    }
+  }
+
 }
