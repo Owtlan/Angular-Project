@@ -10,6 +10,13 @@
     transform: scale(0);
     animation: slideIn 0.5s forwards, fadeIn 0.5s forwards;
 }
+:host {
+    display: block; /* Уверете се, че компонентът заема пространството */
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    border-radius: 15px; /* Закръглете ъглите */
+    min-height: 300px; /* Уверете се, че има минимална височина */
+}
 
 /* Анимация при отваряне */
 @keyframes slideIn {
