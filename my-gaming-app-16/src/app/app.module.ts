@@ -17,6 +17,7 @@ import { provideStorage, getStorage } from '@angular/fire/storage'; // Импо�
 import { environment } from '../environments/environment';
 import { LogoutComponent } from './user/logout/logout.component';
 import { CreateComponent } from './create/create.component';
+import { GameDetailsComponent } from './game-details/game-details.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CreateComponent } from './create/create.component';
     HomeComponent,
     LogoutComponent,
     CreateComponent,
+    GameDetailsComponent,
   ],
   imports: [
     BrowserModule,

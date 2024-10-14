@@ -13,6 +13,7 @@
                 <img [src]="game.imageUrl" alt="{{ game.title }}" />
                 <h3>{{ game.title }}</h3>
                 <p>{{ game.description }}</p>
+                <button [routerLink]="['/games', game.id]">Details</button>
             </div>
         </div>
     </section>
