@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, limit, query } from 'firebase/firestore';
 
 
 @Component({
@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
 
   async fetchGames() {
     const gamesCollection = collection(this.firestore, 'games');
-    const gamesSnapshot = await getDocs(gamesCollection);
+    const gamesQuery = query(gamesCollection, limit(5))
+    const gamesSnapshot = await getDocs(gamesQuery);
     this.games = gamesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   }
 

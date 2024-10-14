@@ -17,10 +17,13 @@ export class GameDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.gameId = this.route.snapshot.paramMap.get('id');
+    console.log('Game ID:', this.gameId); 
 
     if (this.gameId) {
       this.gameService.getGameById(this.gameId).then(data => {
         this.gameData = data;
+        console.log('Game Data:', this.gameData); 
+
       }).catch(error => {
         console.error('Error fetching game data:', error);
       })

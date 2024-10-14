@@ -29,6 +29,7 @@ import { GameDetailsComponent } from './game-details/game-details.component';
     LogoutComponent,
     CreateComponent,
     GameDetailsComponent,
+ 
   ],
   imports: [
     BrowserModule,

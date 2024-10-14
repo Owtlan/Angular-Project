@@ -7,6 +7,7 @@ import { LogoutComponent } from './user/logout/logout.component';
 import { CreateComponent } from './create/create.component';
 import { GameDetailsComponent } from './game-details/game-details.component';
 
+
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
@@ -14,6 +15,8 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'create', component: CreateComponent },
   { path: 'games/:id', component: GameDetailsComponent },
+ 
+  
   { path: '', redirectTo: '/create', pathMatch: 'full' }
 ];
 
