@@ -3,6 +3,9 @@ import { Firestore } from '@angular/fire/firestore';
 import { collection, addDoc, doc } from 'firebase/firestore'; // Добавено е `doc` за работа с документите
 import { Router } from '@angular/router'; // За навигиране към детайлите
 
+import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage'; // Импортиране на Firebase Storage
+
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -13,28 +16,59 @@ export class CreateComponent {
   description: string = '';
   price: number = 0;
   category: string = '';
-  imageUrl: string = '';
+  imageFile: File | null = null; // Променлива за съхранение на изображението
+  imagePreview: string | null = null;
 
-  constructor(private firestore: Firestore, private router: Router) { }
+  constructor(private firestore: Firestore, private router: Router, private storage: Storage) { }
+
+  onFileSelected(event: Event) {
+    const target = event.target as HTMLInputElement;
+    if (target.files && target.files.length > 0) {
+      this.imageFile = target.files[0]; // Запазваме избраното изображение
+
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imagePreview = e.target.result
+      };
+      reader.readAsDataURL(this.imageFile); // Четем файла като Data URL
+
+    }
+  }
+
 
   async addGame() {
+
+    if (!this.imageFile) {
+      console.error('No image file selected');
+      return;
+    }
+
     const gameData = {
       title: this.title,
       description: this.description,
       price: this.price,
       category: this.category,
-      imageUrl: this.imageUrl,
+      imageUrl: '',
     };
 
     try {
+      // Качване на изображението в Firebase Storage
+      const storagePath = `images/${this.imageFile.name}`; // Път за съхранение
+      const storageRef = ref(this.storage, storagePath);
+      await uploadBytes(storageRef, this.imageFile); // Качваме файла
+
+      // Получаване на URL на каченото изображение
+      const imageUrl = await getDownloadURL(storageRef);
+      gameData.imageUrl = imageUrl; // Записваме URL адреса в данните за играта
+
       const gamesCollection = collection(this.firestore, 'games');
-      
+
       // Добавяме играта в Firebase и получаваме ID на новия документ
       const docRef = await addDoc(gamesCollection, gameData);
       console.log('Game added with ID: ', docRef.id);  // Тук получаваш ID на играта
 
       // Навигиране към страницата с детайли за играта след успешно създаване
-      this.router.navigate(['/games', docRef.id]); // Пренасочва към страницата за детайли на играта
+      this.router.navigate(['/', docRef.id]);
     } catch (error) {
       console.error('Error adding game: ', error);
     }
