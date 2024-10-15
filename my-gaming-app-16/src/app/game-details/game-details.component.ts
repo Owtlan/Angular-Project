@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GameService } from '../service/game.service';
-
+import { FirebaseService } from '../firebase.service'; // Firebase услуга
+import { Observable } from 'rxjs';
+import { Game } from '../model/game.model'; // Модел за игра
 
 @Component({
   selector: 'app-game-details',
@@ -10,24 +11,21 @@ import { GameService } from '../service/game.service';
 })
 export class GameDetailsComponent implements OnInit {
   gameId: string | null = null;
-  gameData: any = null;
+  gameData: Game | null = null;
 
-
-  constructor(private route: ActivatedRoute, private gameService: GameService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private firebaseService: FirebaseService
+  ) {}
 
   ngOnInit(): void {
-    this.gameId = this.route.snapshot.paramMap.get('id');
-    console.log('Game ID:', this.gameId); 
-
-    if (this.gameId) {
-      this.gameService.getGameById(this.gameId).then(data => {
-        this.gameData = data;
-        console.log('Game Data:', this.gameData); 
-
-      }).catch(error => {
-        console.error('Error fetching game data:', error);
-      })
-    }
-
+    this.route.paramMap.subscribe(params => {
+      this.gameId = params.get('id');
+      if (this.gameId) {
+        this.firebaseService.getGameById(this.gameId).subscribe(data => {
+          this.gameData = data;
+        });
+      }
+    });
   }
 }

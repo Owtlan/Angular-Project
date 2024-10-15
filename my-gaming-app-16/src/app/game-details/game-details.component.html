@@ -1,12 +1,12 @@
 <div *ngIf="gameData" class="game-details">
-    <h1>{{ gameData.title }}</h1>
-    <p><strong>Description:</strong> {{ gameData.description }}</p>
-    <p><strong>Price:</strong> ${{ gameData.price }}</p>
-    <p><strong>Category:</strong> {{ gameData.category }}</p>
-    <img [src]="gameData.imageUrl" alt="Game image" class="game-image">
-  </div>
-  
-  <div *ngIf="!gameData">
-    <p>Loading game details...</p>
-  </div>
+  <h1>{{ gameData.title }}</h1>
+  <p><strong>Description:</strong> {{ gameData.description }}</p>
+  <p><strong>Price:</strong> ${{ gameData.price }}</p>
+  <p><strong>Category:</strong> {{ gameData.category }}</p>
+  <img [src]="gameData.imageUrl" alt="Game image" class="game-image">
+</div>
+
+<div *ngIf="!gameData">
+  <p>Loading game details...</p>
+</div>
   

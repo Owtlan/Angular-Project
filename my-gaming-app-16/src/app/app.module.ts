@@ -18,6 +18,8 @@ import { environment } from '../environments/environment';
 import { LogoutComponent } from './user/logout/logout.component';
 import { CreateComponent } from './create/create.component';
 import { GameDetailsComponent } from './game-details/game-details.component';
+import { GamesComponent } from './games/games.component';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { GameDetailsComponent } from './game-details/game-details.component';
     LogoutComponent,
     CreateComponent,
     GameDetailsComponent,
+    GamesComponent,
+
  
   ],
   imports: [
