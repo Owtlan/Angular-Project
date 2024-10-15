@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   async fetchGames() {
     const gamesCollection = collection(this.firestore, 'games');
-    const gamesQuery = query(gamesCollection, limit(5))
+    const gamesQuery = query(gamesCollection, limit(12))
     const gamesSnapshot = await getDocs(gamesQuery);
     this.games = gamesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   }

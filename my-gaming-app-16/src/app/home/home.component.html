@@ -1,39 +1,29 @@
 <div class="home-container animate__animated animate__fadeIn animate__delay-0.5s">
     <header class="hero-section">
+     
         <div class="overlay"></div>
         <h1>Welcome to GameZone</h1>
         <p>Where Gamers Unite</p>
         <a routerLink="/games" class="cta-button">Explore Games</a>
+        <video autoplay muted loop class="video-background">
+            <source class="vid-wallpaper" src="../../assets/4K_227.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <!-- <img class="img-wallpaper" src="../../assets/portal.jpg" alt=""> -->
+        <section class="featured-games">
+            <h2>OUR GAMES</h2>
+            <div class="game-grid">
+                <div class="game-card" *ngFor="let game of games">
+                    <img [src]="game.imageUrl" alt="{{ game.title }}" class="game-image" />
+                    <div class="game-details">
+                        <h3>{{ game.title }}</h3>
+                    </div>
+                    <a [routerLink]="['/games/details', game.id]" class="details-button animate__animated animate__pulse">Details</a>
+                </div>
+            </div>
+    
+        </section>
     </header>
 
-    <section class="featured-games">
-        <h2>Featured Games</h2>
-        <div class="game-grid">
-            <div class="game-card" *ngFor="let game of games">
-                <img [src]="game.imageUrl" alt="{{ game.title }}" />
-                <h3>{{ game.title }}</h3>
-                <p>{{ game.description }}</p>
-                <a [routerLink]="['/games/details', game.id]">Details</a>
-            </div>
-        </div>
-        
-    </section>
 
-    <section class="latest-news">
-        <h2>Latest News</h2>
-        <div class="news-grid">
-            <div class="news-card">
-                <h3>New Update: Cyber Warrior 2.0</h3>
-                <p>The latest patch brings exciting new features and challenges.</p>
-            </div>
-            <div class="news-card">
-                <h3>Gaming Tournament 2024</h3>
-                <p>Join the biggest online gaming event of the year!</p>
-            </div>
-            <div class="news-card">
-                <h3>Fantasy Realm Expansion</h3>
-                <p>Discover new realms and characters in the upcoming expansion.</p>
-            </div>
-        </div>
-    </section>
 </div>

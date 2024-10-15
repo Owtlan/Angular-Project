@@ -1,34 +1,31 @@
 /* Общ стил за началната страница */
 .home-container {
-    background-color: #0d0d0d;
-    /* Тъмен фон за gaming атмосфера */
-    color: #fff;
-    /* Бял текст */
-    font-family: 'Orbitron', sans-serif;
-    /* Футуристичен шрифт */
+ 
+    font-family: Arial, sans-serif;
 }
 
 /* Стил за хедъра (hero section) */
 .hero-section {
     position: relative;
-    height: 60vh;
-    /* background: url('assets/hero-bg.jpg') no-repeat center center/cover; */
-    /* Фоново изображение */
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: white;
     text-align: center;
+    overflow: hidden;
+    /* background: url('/my-gaming-app-16/') no-repeat center center/cover; */
 }
 
-.hero-section .overlay {
+.overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    /* Черен полупрозрачен overlay */
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачност за подобряване на четимостта */
+    z-index: 0;
 }
 
 .hero-section h1 {
@@ -46,28 +43,26 @@
 }
 
 .cta-button {
-    z-index: 1;
-    background-color: #39ff14;
-    color: #0d0d0d;
+    background-color: #007bff;
+    color: white;
     padding: 10px 20px;
-    font-size: 18px;
     border: none;
     border-radius: 5px;
     text-decoration: none;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
+    z-index: 1
 }
 
 .cta-button:hover {
-    background-color: #32e314;
-    /* Леко по-тъмен зелен за hover */
+    background-color: #0056b3;    /* Леко по-тъмен зелен за hover */
 }
 
 /* Стил за секцията с избрани игри */
 .featured-games {
-    padding: 50px 20px;
-    text-align: center;
+    margin-top: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .featured-games h2 {
@@ -77,68 +72,80 @@
 }
 
 .game-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    max-width: 800px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Използваме CSS grid */
+    gap: 8px 20px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.233);
+    background: #80808059;
+    border-radius: 5px;
+}
+
+
+.game-image {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px; /* Разстояние между изображението и текста */
+}
+.game-details {
+    flex-grow: 1; /* За да заеме останалото място */
+}
+.details-button {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    font-size: 12px;
+}
+.details-button:hover {
+    background-color: #0056b3;
 }
 
 .game-card {
-    background-color: #1b1b1b;
-    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Прозрачен фон на картата */
     border-radius: 10px;
-    width: 200px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* За да не излизат елементите извън границите */
+    display: flex; /* За разположение на изображението и текста */
+    align-items: center; /* Вертикално центрирано подравняване */
+    padding: 10px;
+    height: 20px;
 }
 
-.game-card img {
+/* .hero-section .vid-wallpaper{
+   position: absolute;
     width: 100%;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    height: 100%;
+    object-fit: cover;
+    left: 0;
+    top: 0;
+} */
+
+.video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Прави видеото да покрива целия фон */
+    transform: translate(-50%, -50%); /* Центриране по хоризонтала и вертикала */
+    z-index: -1; /* Това гарантира, че видеото ще бъде на заден план */
+}
+.video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Прави видеото да покрива целия фон */
+    transform: translate(-50%, -50%); /* Центриране по хоризонтала и вертикала */
+    z-index: -1; /* Това гарантира, че видеото ще бъде на заден план */
 }
 
-.game-card h3 {
-    font-size: 20px;
-    color: #39ff14;
-}
 
-.game-card p {
-    font-size: 14px;
-    color: #ccc;
-}
 
 /* Стил за секцията с последни новини */
-.latest-news {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.latest-news h2 {
-    font-size: 36px;
-    color: #39ff14;
-    margin-bottom: 40px;
-}
-
-.news-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.news-card {
-    background-color: #1b1b1b;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
-}
-
-.news-card h3 {
-    font-size: 20px;
-    color: #39ff14;
-    margin-bottom: 10px;
-}
-
-.news-card p {
-    font-size: 14px;
-    color: #ccc;
-}
