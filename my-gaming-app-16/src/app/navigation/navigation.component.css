@@ -7,15 +7,19 @@ body {
 }
 
 .navbar {
-    background-color: #1f1f1f; 
+    /* background-color: #1f1f1f; 
     padding: 15px 20px; 
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);  */
+    position: relative;
 }
 
 .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: absolute;
+    width: 100%;
+    z-index: 999;
 }
 
 .logo {
