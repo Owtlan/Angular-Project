@@ -33,8 +33,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   playVideo() {
     const video: HTMLVideoElement = this.videoElement.nativeElement;
+
+
     if (video) {
       video.muted = true;
+
+      // video.playbackRate = 1;
+
       video.play().catch(error => {
         console.error('Error playing video:', error);
       });
