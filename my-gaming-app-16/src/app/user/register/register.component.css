@@ -2,7 +2,6 @@
 .register-container {
     position: relative;
     /* Позволява позициониране на дъното и на формата */
-    height: 100vh;
     /* Задава височина на контейнера */
     overflow: hidden;
     display: flex;
@@ -33,7 +32,7 @@
     /* Позволява на формата да се позиционира над видеото */
     z-index: 2;
     /* Задава z-index, за да бъде формата над видеото */
-    background: rgba(255, 255, 255, 0.8);
+    background: rgb(255 255 255 / 15%);;
     /* Бел фон с прозрачност за видимост */
     padding: 20px;
     /* Добавя отстъп около формата */
@@ -41,7 +40,9 @@
     /* Закръглени ъгли на формата */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
-
+.register-box form{
+    overflow: hidden;
+}
 h2 {
     color: #39ff14;
     /* Неоново зелено за заглавието */
@@ -53,6 +54,8 @@ h2 {
 .form-group {
     margin-bottom: 20px;
     text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 
 label {
@@ -63,7 +66,7 @@ label {
 }
 
 input {
-    width: 100%;
+    
     padding: 10px;
     border: none;
     border-radius: 5px;
