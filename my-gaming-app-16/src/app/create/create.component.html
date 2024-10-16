@@ -1,12 +1,15 @@
 <div class="create-container animate__animated animate__zoomInRight animate__delay-0.5s">
     <h1>Create a New Game</h1>
-
+    <video #videoBackground autoplay muted loop class="video-background">
+        <source class="vid-wallpaper" src="../../assets/illidan-stormrage.1920x1080.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     <form (ngSubmit)="addGame()" #gameForm="ngForm">
         <div class="form-group">
             <label for="title">Game Title:</label>
             <input type="text" id="title" [(ngModel)]="title" name="title" required>
         </div>
-        
+
         <div class="form-group">
             <label for="description">Description:</label>
             <textarea id="description" [(ngModel)]="description" name="description" required></textarea>

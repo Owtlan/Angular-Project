@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { collection, addDoc, doc } from 'firebase/firestore'; // Добавено е `doc` за работа с документите
 import { Router } from '@angular/router'; // За навигиране към детайлите
@@ -11,7 +11,11 @@ import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent {
+export class CreateComponent implements AfterViewInit {
+  @ViewChild('videoBackground') videoElement!: ElementRef; // Декоратор за достъп до видеото
+
+
+
   title: string = '';
   description: string = '';
   price: number = 0;
@@ -20,6 +24,20 @@ export class CreateComponent {
   imagePreview: string | null = null;
 
   constructor(private firestore: Firestore, private router: Router, private storage: Storage) { }
+
+  ngAfterViewInit() {
+    this.playVideo(); // Стартиране на видеото при инициализация на компонента
+  }
+  playVideo() {
+    const video: HTMLVideoElement = this.videoElement.nativeElement;
+
+    if (video) {
+      video.muted = true;
+      video.play().catch(error => {
+        console.error('Error playing video:', error);
+      });
+    }
+  }
 
   onFileSelected(event: Event) {
     const target = event.target as HTMLInputElement;
@@ -51,6 +69,7 @@ export class CreateComponent {
       imageUrl: '',
     };
 
+
     try {
       // Качване на изображението в Firebase Storage
       const storagePath = `images/${this.imageFile.name}`; // Път за съхранение
@@ -73,5 +92,7 @@ export class CreateComponent {
       console.error('Error adding game: ', error);
     }
   }
+
+
 }
 

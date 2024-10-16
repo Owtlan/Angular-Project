@@ -1,5 +1,10 @@
 <div class="register-container">
+  <video #videoBackground autoplay muted loop class="video-background">
+    <source class="vid-wallpaper" src="../../../assets/login.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
   <div class="register-box">
+    
     <h2>Create Your GameZone Account</h2>
     <form (ngSubmit)="register()">
       <div class="form-group">
