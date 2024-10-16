@@ -25,7 +25,7 @@ body {
 .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #e63946; 
+    
     text-decoration: none;
 }
 
@@ -87,7 +87,9 @@ body {
 .search {
     display: flex;
 }
-
+.search a{
+    color: white;
+}
 /* Magnifying glass icon styling */
 .magnifying-glass {
     cursor: pointer;
@@ -96,14 +98,20 @@ body {
     margin-left: 15px;
     display: flex;
     align-items: center;
+    margin-right: 10px;
+    position: relative;
   }
   
   .magnifying-glass i {
     transition: color 0.3s ease;
+    border: 1px solid #a7abbf5c;
+    padding: 5px 5px;
+    background: #8080802e;
+    border-radius: 5px;
   }
   
   .magnifying-glass i:hover {
-    color: #e63946; /* Лупата ще стане червена при задържане */
+    color: #a189ff;; /* Лупата ще стане червена при задържане */
   }
   
 
@@ -113,17 +121,25 @@ body {
     max-height: 0; /* Няма височина по подразбиране */
     overflow: hidden; /* Скрива излишното съдържание */
     transition: opacity 0.5s ease, max-height 0.5s ease; 
+    position: absolute;
+    left: 40px;
+    top: 0;
   }
   .search-bar.show {
     opacity: 1; /* Показано */
     max-height: 100px; /* Можеш да настроиш подходяща височина */
     overflow: visible; /* Позволява видимост на съдържанието */
+    display: flex;
+    flex-direction: column;
+    
 }
   .search-bar input {
     padding: 8px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background: #80808059;
+    color: white
   }
   
   .search-bar button {
@@ -134,6 +150,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
   }
   
   /* Adjustments for mobile responsiveness */

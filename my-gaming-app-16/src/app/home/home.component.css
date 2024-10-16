@@ -23,7 +23,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачност за подобряване на четимостта */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Полупрозрачност за подобряване на четимостта */
     z-index: 0;
 }
 
@@ -53,7 +54,8 @@
 }
 
 .cta-button:hover {
-    background-color: #0056b3;    /* Леко по-тъмен зелен за hover */
+    background-color: #0056b3;
+    /* Леко по-тъмен зелен за hover */
 }
 
 /* Стил за секцията с избрани игри */
@@ -64,32 +66,43 @@
     position: relative;
 }
 
-.featured-games h2 {
-    font-size: 36px;
-    color: #39ff14;
-    margin-bottom: 40px;
+.game-grid h2 {
+    font-size: 12px;
+    position: absolute;
+    top: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .game-grid {
     max-width: 800px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Използваме CSS grid */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    /* Използваме CSS grid */
     gap: 8px 20px;
     padding: 20px;
+    padding-top: 40px;
     border: 1px solid rgba(0, 0, 0, 0.233);
-    background: #80808059;
+    background: #232a31a8;
     border-radius: 5px;
+    
 }
 
 
 .game-image {
     width: 25px;
     height: 25px;
-    margin-right: 10px; /* Разстояние между изображението и текста */
+    margin-right: 10px;
+    /* Разстояние между изображението и текста */
 }
+
 .game-details {
-    flex-grow: 1; /* За да заеме останалото място */
+    flex-grow: 1;
+    text-align: initial;
+    
+    /* За да заеме останалото място */
 }
+
 .details-button {
     background-color: #007bff;
     color: white;
@@ -100,17 +113,23 @@
     transition: background-color 0.3s;
     font-size: 12px;
 }
+
 .details-button:hover {
     background-color: #0056b3;
 }
 
 .game-card {
-    background-color: rgba(255, 255, 255, 0.8); /* Прозрачен фон на картата */
+    background: #77889961;
+    border: 1px solid #ffffff7a;
+    /* Прозрачен фон на картата */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* За да не излизат елементите извън границите */
-    display: flex; /* За разположение на изображението и текста */
-    align-items: center; /* Вертикално центрирано подравняване */
+    overflow: hidden;
+    /* За да не излизат елементите извън границите */
+    display: flex;
+    /* За разположение на изображението и текста */
+    align-items: center;
+    /* Вертикално центрирано подравняване */
     padding: 10px;
     height: 20px;
 }
@@ -130,19 +149,26 @@
     left: 50%;
     width: 100vw;
     height: 100vh;
-    object-fit: cover; /* Прави видеото да покрива целия фон */
-    transform: translate(-50%, -50%); /* Центриране по хоризонтала и вертикала */
-    z-index: -1; /* Това гарантира, че видеото ще бъде на заден план */
+    object-fit: cover;
+    /* Прави видеото да покрива целия фон */
+    transform: translate(-50%, -50%);
+    /* Центриране по хоризонтала и вертикала */
+    z-index: -1;
+    /* Това гарантира, че видеото ще бъде на заден план */
 }
+
 .video-background {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100vw;
     height: 100vh;
-    object-fit: cover; /* Прави видеото да покрива целия фон */
-    transform: translate(-50%, -50%); /* Центриране по хоризонтала и вертикала */
-    z-index: -1; /* Това гарантира, че видеото ще бъде на заден план */
+    object-fit: cover;
+    /* Прави видеото да покрива целия фон */
+    transform: translate(-50%, -50%);
+    /* Центриране по хоризонтала и вертикала */
+    z-index: -1;
+    /* Това гарантира, че видеото ще бъде на заден план */
 }
 
 

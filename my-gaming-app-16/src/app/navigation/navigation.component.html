@@ -1,18 +1,18 @@
 <nav class="navbar">
     <div class="container">
         <div class="search">
-            <a class="logo" routerLink="/">GameZone</a>
+            <a class="logo" routerLink="/">GameZone Shop</a>
 
             <!-- Magnifying glass icon (Font Awesome) -->
-            <div class="magnifying-glass" (click)="toggleSearch()">
-                <i class="fa-brands fa-searchengin"></i>
+            <div class="magnifying-glass">
+                <i class="fa-brands fa-searchengin" (click)="toggleSearch()"></i>
+                <div [ngClass]="{'search-bar': true, 'show': isSearchVisible}">
+                    <input type="text" placeholder="Search games..." />
+                    <button>Search</button>
+                </div>
             </div>
 
             <!-- Search input, visible when isSearchVisible is true -->
-            <div [ngClass]="{'search-bar': true, 'show': isSearchVisible}">
-                <input type="text" placeholder="Search games..." />
-                <button>Search</button>
-            </div>
 
         </div>
 
