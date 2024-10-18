@@ -23,7 +23,7 @@ export class CreateComponent implements AfterViewInit {
   imageFile: File | null = null; // Променлива за съхранение на изображението
   imagePreview: string | null = null;
 
-  constructor(private firestore: Firestore, private router: Router, private storage: Storage,private auth: Auth ) { }
+  constructor(private firestore: Firestore, private router: Router, private storage: Storage, private auth: Auth) { }
 
   ngAfterViewInit() {
     this.playVideo(); // Стартиране на видеото при инициализация на компонента
@@ -95,7 +95,7 @@ export class CreateComponent implements AfterViewInit {
       console.log('Game added with ID: ', docRef.id);  // Тук получаваш ID на играта
 
       // Навигиране към страницата с детайли за играта след успешно създаване
-      this.router.navigate(['/', docRef.id]);
+      this.router.navigate(['/']);
     } catch (error) {
       console.error('Error adding game: ', error);
     }
