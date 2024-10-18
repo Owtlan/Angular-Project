@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
@@ -9,12 +9,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit {
+  @ViewChild('videoBackground') videoElement!: ElementRef;
 
   email: string = '';
   password: string = '';
 
   constructor(private auth: Auth, private router: Router) { }
+  ngAfterViewInit() {
+    this.playVideo();
+  }
+
+  playVideo() {
+    const video: HTMLVideoElement = this.videoElement.nativeElement;
+
+    if (video) {
+      video.muted = true;
+      video.play().catch(error => {
+        console.error('Error playing video:', error);
+      });
+    }
+  }
+
 
   login() {
     signInWithEmailAndPassword(this.auth, this.email, this.password)

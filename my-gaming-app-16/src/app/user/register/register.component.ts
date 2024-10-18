@@ -24,7 +24,7 @@ export class RegisterComponent implements AfterViewInit{
   constructor(private auth: Auth, private firestore: Firestore, private router: Router) { }
 
   ngAfterViewInit() {
-    this.playVideo(); // Стартиране на видеото при инициализация на компонента
+    this.playVideo(); 
   }
   playVideo() {
     const video: HTMLVideoElement = this.videoElement.nativeElement;

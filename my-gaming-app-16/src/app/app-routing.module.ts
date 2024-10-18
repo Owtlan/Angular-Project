@@ -7,6 +7,7 @@ import { LogoutComponent } from './user/logout/logout.component';
 import { CreateComponent } from './create/create.component';
 import { GameDetailsComponent } from './game-details/game-details.component';
 import { GamesComponent } from './games/games.component';
+import { EditGameComponent } from './edit-game/edit-game.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -15,10 +16,11 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'create', component: CreateComponent },
   { path: 'games/details/:id', component: GameDetailsComponent },
-  { path: 'games/:category', component: GamesComponent }, 
- 
+  { path: 'games/:category', component: GamesComponent },
+  { path: 'games/:id/edit', component: EditGameComponent },
   
   { path: '', redirectTo: '/', pathMatch: 'full' }
+
 ];
 
 @NgModule({

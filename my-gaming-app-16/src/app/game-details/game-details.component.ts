@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { FirebaseService } from '../firebase.service'; // Firebase услуга
 import { Observable } from 'rxjs';
 import { Game } from '../model/game.model'; // Модел за игра
+import { Auth } from '@angular/fire/auth';  // Импортирай Firebase Authentication
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-details',
@@ -12,13 +14,21 @@ import { Game } from '../model/game.model'; // Модел за игра
 export class GameDetailsComponent implements OnInit {
   gameId: string | null = null;
   gameData: Game | null = null;
+  currentUserId: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
-    private firebaseService: FirebaseService
-  ) {}
+    private firebaseService: FirebaseService,
+    private auth: Auth,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+
+    this.auth.onAuthStateChanged(user => {
+      this.currentUserId = user ? user.uid : null;  // Запазваме ID на текущия потребител
+    });
+
     this.route.paramMap.subscribe(params => {
       this.gameId = params.get('id');
       if (this.gameId) {
@@ -27,5 +37,38 @@ export class GameDetailsComponent implements OnInit {
         });
       }
     });
+  }
+
+  isCreator(): boolean {
+    return this.currentUserId === this.gameData?.creatorId;
+  }
+
+
+  isLoggedIn(): boolean {
+    return !!this.currentUserId;
+  }
+
+
+  editGame() {
+    // Логика за навигиране към страницата за редакция
+    this.router.navigate(['/games', this.gameId, 'edit']);
+    
+  }
+
+  deleteGame() {
+    if (this.gameId) {  // Проверяваме дали this.gameId не е null
+      this.firebaseService.deleteGame(this.gameId).then(() => {
+        this.router.navigate(['/games']);  // Навигиране след изтриване
+      }).catch((error: any) => {
+        console.error('Error deleting game:', error);
+      });
+    } else {
+      console.error('Game ID is null. Cannot delete game.');
+    }
+  }
+
+  buyGame() {
+    // Логика за купуване на играта
+    console.log('Buying game...');
   }
 }

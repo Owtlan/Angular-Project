@@ -1,0 +1,27 @@
+<div *ngIf="gameData">
+    <h2>Edit Game</h2>
+    
+    <form (ngSubmit)="updateGame()">
+      <label for="title">Title:</label>
+      <input type="text" id="title" [(ngModel)]="gameData.title" name="title" required>
+      
+      <label for="description">Description:</label>
+      <textarea id="description" [(ngModel)]="gameData.description" name="description" required></textarea>
+      
+      <label for="price">Price:</label>
+      <input type="number" id="price" [(ngModel)]="gameData.price" name="price" required>
+  
+      <label for="category">Category:</label>
+      <input type="text" id="category" [(ngModel)]="gameData.category" name="category" required>
+      
+      <label for="imageUrl">Image URL:</label>
+      <input type="text" id="imageUrl" [(ngModel)]="gameData.imageUrl" name="imageUrl">
+      
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
+  
+  <div *ngIf="!gameData">
+    <p>Loading game details...</p>
+  </div>
+  

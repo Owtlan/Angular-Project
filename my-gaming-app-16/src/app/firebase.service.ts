@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection, docData, doc, query, where } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, docData, doc, query, where,deleteDoc,updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Game } from './model/game.model'; // Модел за игра
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
+  // deleteGame(gameId: string | null) {
+  //   throw new Error('Method not implemented.');
+  // }
   constructor(private firestore: Firestore) { }
 
   // Връщаме Observable за игрите с конкретната категория
@@ -21,5 +25,18 @@ export class FirebaseService {
     const gameDoc = doc(this.firestore, `games/${id}`);
     return docData(gameDoc, { idField: 'id' }) as Observable<Game>;
   }
+
+
+  deleteGame(gameId: string): Promise<void> {
+    const gameRef = doc(this.firestore, 'games', gameId);
+    return deleteDoc(gameRef);
+  }
+  
+  updateGame(gameId: string, updatedGameData: Partial<Game>): Promise<void> {
+    const gameRef = doc(this.firestore, `games/${gameId}`);
+    return updateDoc(gameRef, updatedGameData);
+  }
+  
+
 }
 

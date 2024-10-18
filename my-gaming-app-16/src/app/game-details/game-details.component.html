@@ -3,10 +3,25 @@
   <p><strong>Description:</strong> {{ gameData.description }}</p>
   <p><strong>Price:</strong> ${{ gameData.price }}</p>
   <p><strong>Category:</strong> {{ gameData.category }}</p>
-  <img [src]="gameData.imageUrl" alt="Game image" class="game-image">
+  <img [src]="gameData?.imageUrl" alt="Game image" class="game-image">
+
+  <!-- Показване на бутон за редакция, ако потребителят е създателят -->
+  <div *ngIf="isCreator()">
+    <button (click)="editGame()">Edit</button>
+    <button (click)="deleteGame()">Delete</button>
+  </div>
+
+  <!-- Показване на бутон за купуване, ако потребителят е логнат и не е създателят -->
+  <div *ngIf="!isCreator() && isLoggedIn()">
+    <button (click)="buyGame()">Buy Game</button>
+  </div>
+
+  <!-- Показване на съобщение, ако потребителят не е логнат -->
+  <div *ngIf="!isLoggedIn()">
+    <p>Please log in to interact with this game.</p>
+  </div>
 </div>
 
 <div *ngIf="!gameData">
   <p>Loading game details...</p>
 </div>
-  

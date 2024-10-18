@@ -20,6 +20,8 @@ import { CreateComponent } from './create/create.component';
 import { GameDetailsComponent } from './game-details/game-details.component';
 import { GamesComponent } from './games/games.component';
 
+import { EditGameComponent } from './edit-game/edit-game.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { GamesComponent } from './games/games.component';
     CreateComponent,
     GameDetailsComponent,
     GamesComponent,
+    EditGameComponent,
 
  
   ],

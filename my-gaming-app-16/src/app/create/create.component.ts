@@ -2,7 +2,7 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { collection, addDoc, doc } from 'firebase/firestore'; // Добавено е `doc` за работа с документите
 import { Router } from '@angular/router'; // За навигиране към детайлите
-
+import { Auth } from '@angular/fire/auth'
 import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage'; // Импортиране на Firebase Storage
 
 
@@ -23,7 +23,7 @@ export class CreateComponent implements AfterViewInit {
   imageFile: File | null = null; // Променлива за съхранение на изображението
   imagePreview: string | null = null;
 
-  constructor(private firestore: Firestore, private router: Router, private storage: Storage) { }
+  constructor(private firestore: Firestore, private router: Router, private storage: Storage,private auth: Auth ) { }
 
   ngAfterViewInit() {
     this.playVideo(); // Стартиране на видеото при инициализация на компонента
@@ -61,12 +61,20 @@ export class CreateComponent implements AfterViewInit {
       return;
     }
 
+    const user = this.auth.currentUser;
+    if (!user) {
+      console.error('No user logged in');
+      return;
+    }
+
+
     const gameData = {
       title: this.title,
       description: this.description,
       price: this.price,
       category: this.category,
       imageUrl: '',
+      creatorId: user.uid
     };
 
 
