@@ -3,9 +3,10 @@
         <div class="overlay"></div>
         <h1>Welcome to GameZone</h1>
         <p>Where Gamers Unite</p>
-       
+
         <video #videoBackground autoplay muted loop class="video-background">
-            <source class="vid-wallpaper" src="../../assets/death-knights-world-of-warcraft.1920x1080.mp4" type="video/mp4">
+            <source class="vid-wallpaper" src="../../assets/death-knights-world-of-warcraft.1920x1080.mp4"
+                type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
@@ -17,11 +18,17 @@
                     <div class="game-details">
                         <h3>{{ game.title }}</h3>
                     </div>
-                   <div class="button-section">
-                    <a [routerLink]="['/games/details', game.id]"
-                    class="details-button animate__animated animate__pulse">Details</a>
-                <button (click)="buyGame(game.id)" class="buy-button animate__animated animate__pulse">Buy Game</button>
-                   </div>
+                    <div class="button-section">
+                        <a [routerLink]="['/games/details', game.id]"
+                            class="details-button animate__animated animate__pulse">Details</a>
+
+                        <button *ngIf="isLoggedIn && !isGameCreatedByUser(game) && !isGamePurchased(game.id)"
+                            (click)="buyGame(game.id)" class="buy-button animate__animated animate__pulse">
+                            Buy Game
+                        </button>
+                     
+
+                    </div>
                 </div>
             </div>
         </section>
