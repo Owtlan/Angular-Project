@@ -66,8 +66,7 @@ export class GameDetailsComponent implements OnInit {
   }
 
   buyGame() {
-    // Логика за купуване на играта
-    this.router.navigate(['/order'])
-    console.log('Buying game...');
+    this.router.navigate(['/order'], { queryParams: { gameId: this.gameId } }); // Предаване на gameId
   }
+  
 }

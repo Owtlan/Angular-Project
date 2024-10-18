@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection, docData, doc, query, where,deleteDoc,updateDoc } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, docData, doc, query, where, deleteDoc, updateDoc, addDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Game } from './model/game.model'; // Модел за игра
-
+import { Order } from './model/order.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,17 +26,31 @@ export class FirebaseService {
     return docData(gameDoc, { idField: 'id' }) as Observable<Game>;
   }
 
- 
+
   deleteGame(gameId: string): Promise<void> {
     const gameRef = doc(this.firestore, 'games', gameId);
     return deleteDoc(gameRef);
   }
-  
+
   updateGame(gameId: string, updatedGameData: Partial<Game>): Promise<void> {
     const gameRef = doc(this.firestore, `games/${gameId}`);
     return updateDoc(gameRef, updatedGameData);
   }
-  
+  //order
+  async createOrder(order: Order) {
+    try {
+      const ordersCollection = collection(this.firestore, 'orders');
+      const docRef = await addDoc(ordersCollection, {
+        ...order,
+        createdAt: new Date() // Записваме текущата дата
+      });
+      console.log('Order added with ID: ', docRef.id);
+      return docRef.id; // Връщаме ID на новата поръчка
+    } catch (error) {
+      console.error('Error creating order:', error);
+      return null; // Връщаме null при грешка
+    }
+  }
 
 }
 
