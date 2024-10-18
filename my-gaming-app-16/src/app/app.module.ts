@@ -21,6 +21,7 @@ import { GameDetailsComponent } from './game-details/game-details.component';
 import { GamesComponent } from './games/games.component';
 
 import { EditGameComponent } from './edit-game/edit-game.component';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { EditGameComponent } from './edit-game/edit-game.component';
     GameDetailsComponent,
     GamesComponent,
     EditGameComponent,
+    OrderComponent,
 
  
   ],
