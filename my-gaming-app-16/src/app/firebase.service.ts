@@ -26,7 +26,7 @@ export class FirebaseService {
     return docData(gameDoc, { idField: 'id' }) as Observable<Game>;
   }
 
-
+ 
   deleteGame(gameId: string): Promise<void> {
     const gameRef = doc(this.firestore, 'games', gameId);
     return deleteDoc(gameRef);

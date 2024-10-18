@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FirebaseService } from '../firebase.service'; // Firebase услуга
+import { FirebaseService } from '../firebase.service'; 
 import { Observable } from 'rxjs';
-import { Game } from '../model/game.model'; // Модел за игра
-import { Auth } from '@angular/fire/auth';  // Импортирай Firebase Authentication
+import { Game } from '../model/game.model'; 
+import { Auth } from '@angular/fire/auth'; 
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,7 +26,7 @@ export class GameDetailsComponent implements OnInit {
   ngOnInit(): void {
 
     this.auth.onAuthStateChanged(user => {
-      this.currentUserId = user ? user.uid : null;  // Запазваме ID на текущия потребител
+      this.currentUserId = user ? user.uid : null; 
     });
 
     this.route.paramMap.subscribe(params => {
@@ -50,15 +50,13 @@ export class GameDetailsComponent implements OnInit {
 
 
   editGame() {
-    // Логика за навигиране към страницата за редакция
     this.router.navigate(['/games', this.gameId, 'edit']);
-    
   }
 
   deleteGame() {
-    if (this.gameId) {  // Проверяваме дали this.gameId не е null
+    if (this.gameId) {
       this.firebaseService.deleteGame(this.gameId).then(() => {
-        this.router.navigate(['/games']);  // Навигиране след изтриване
+        this.router.navigate(['/']); 
       }).catch((error: any) => {
         console.error('Error deleting game:', error);
       });
