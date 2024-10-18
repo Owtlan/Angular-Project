@@ -42,13 +42,13 @@ export class FirebaseService {
       const ordersCollection = collection(this.firestore, 'orders');
       const docRef = await addDoc(ordersCollection, {
         ...order,
-        createdAt: new Date() // Записваме текущата дата
+        createdAt: new Date() 
       });
       console.log('Order added with ID: ', docRef.id);
-      return docRef.id; // Връщаме ID на новата поръчка
+      return docRef.id; 
     } catch (error) {
       console.error('Error creating order:', error);
-      return null; // Връщаме null при грешка
+      return null; 
     }
   }
 

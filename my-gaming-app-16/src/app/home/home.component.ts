@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { collection, getDocs, limit, query } from 'firebase/firestore';
+import { Router } from '@angular/router'; // Импорт на Router
 
 
 @Component({
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   games: any[] = [];
 
-  constructor(private firestore: Firestore) { }
+  constructor(private firestore: Firestore,private router: Router) { }
 
 
   async ngOnInit() {
@@ -46,4 +47,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
   }
 
+  buyGame(gameId: string) {
+    this.router.navigate(['/order'], { queryParams: { gameId } });
+  }
 }

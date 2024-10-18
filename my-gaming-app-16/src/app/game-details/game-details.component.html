@@ -12,9 +12,9 @@
   </div>
 
   <!-- Показване на бутон за купуване, ако потребителят е логнат и не е създателят -->
-  <div *ngIf="!isCreator() && isLoggedIn()">
+  <!-- <div *ngIf="!isCreator() && isLoggedIn()">
     <button (click)="buyGame()">Buy Game</button>
-  </div>
+  </div> -->
 
   <!-- Показване на съобщение, ако потребителят не е логнат -->
   <div *ngIf="!isLoggedIn()">

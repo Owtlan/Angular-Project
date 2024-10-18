@@ -65,8 +65,8 @@ export class GameDetailsComponent implements OnInit {
     }
   }
 
-  buyGame() {
-    this.router.navigate(['/order'], { queryParams: { gameId: this.gameId } }); // Предаване на gameId
-  }
+  // buyGame() {
+  //   this.router.navigate(['/order'], { queryParams: { gameId: this.gameId } }); 
+  // }
   
 }
