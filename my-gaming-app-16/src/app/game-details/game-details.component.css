@@ -1,66 +1,59 @@
 .game-details {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(34, 34, 34, 0.8)), url('https://images.unsplash.com/photo-1517859657664-d2c3f575f9f5') no-repeat center center/cover;
-    color: #fff;
-    border-radius: 15px;
-    padding: 20px;
-    max-width: 600px;
-    margin: 20px auto;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    min-height: 300px; /* Уверете се, че има минимална височина */
-    transform: scale(0);
-    animation: slideIn 0.5s forwards, fadeIn 0.5s forwards;
-}
-:host {
-    display: block; /* Уверете се, че компонентът заема пространството */
-    background: rgb(238,174,202);
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-    border-radius: 15px; /* Закръглете ъглите */
-    min-height: 300px; /* Уверете се, че има минимална височина */
-}
-.game-details img{
-    width: 25px;
-}
-/* Анимация при отваряне */
-@keyframes slideIn {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    display: flex; /* Използваме flexbox за подредба на елементите */
+    flex-wrap: wrap; /* Позволява елементите да се подреждат на нови редове при нужда */
+    margin: 20px; /* Външно разстояние */
+    padding: 20px; /* Вътрешно разстояние */
+    background-color: #f8f9fa; /* Светъл фон */
+    border-radius: 10px; /* Закръглени ъгли */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Лека сянка за дълбочина */
 }
 
 .game-image {
-    border-radius: 10px;
-    max-width: 100%;
-    height: auto;
-    margin-top: 15px;
-    transition: transform 0.3s;
-}
-
-.game-image:hover {
-    transform: scale(1.05); /* При приближаване на изображението */
+    max-width: 300px; /* Максимална ширина на изображението */
+    border-radius: 10px; /* Закръглени ъгли на изображението */
+    margin-right: 20px; /* Разстояние между изображението и текста */
 }
 
 h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-size: 2rem; /* Размер на заглавието */
+    color: #343a40; /* Тъмен цвят на текста */
+    margin-bottom: 10px; /* Разстояние под заглавието */
 }
 
 p {
-    font-size: 1.2em;
-    line-height: 1.5;
-    margin: 5px 0;
+    font-size: 1.1rem; /* Размер на текста */
+    color: #495057; /* Тъмен сив цвят */
+    margin-bottom: 10px; /* Разстояние под параграфите */
+}
+
+strong {
+    color: #007bff; /* Цветът на текста за важна информация */
+}
+
+button {
+    background-color: #007bff; /* Основен цвят на бутона */
+    color: white; /* Цвят на текста на бутона */
+    border: none; /* Без рамка */
+    border-radius: 5px; /* Закръглени ъгли на бутона */
+    padding: 10px 15px; /* Вътрешно разстояние на бутона */
+    font-size: 1rem; /* Размер на текста на бутона */
+    cursor: pointer; /* Курсор при задържане */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Преходи за ефекти */
+    margin-right: 10px; /* Разстояние между бутоните */
+}
+
+button:hover {
+    background-color: #0056b3; /* По-тъмен цвят при задържане */
+    transform: scale(1.05); /* Леко увеличаване при задържане */
+}
+
+button:active {
+    transform: scale(0.95); /* Намаляване при клик */
+}
+
+/* Съобщение при не логнат потребител */
+.game-details p {
+    margin-top: 20px; /* Разстояние от останалия текст */
+    font-style: italic; /* Курсив за акцент */
+    color: #dc3545; /* Червен цвят за предупреждение */
 }

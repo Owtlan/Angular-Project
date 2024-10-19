@@ -20,7 +20,7 @@
                     </div>
                     <div class="button-section">
                         <a [routerLink]="['/games/details', game.id]"
-                            class="details-button animate__animated animate__pulse">Details</a>
+                            class="details-button">Details</a>
                         <!-- new -->
                         <button *ngIf="isLoggedIn && !isGameCreatedByUser(game) && !isGamePurchased(game.id)"
                             (click)="addToCart(game)" class="add-to-cart-button">

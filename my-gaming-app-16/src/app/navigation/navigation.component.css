@@ -1,164 +1,186 @@
-.navbar {
-    position: relative;
-}
+/* .navbar {
+  position: relative;
+  
+} */
 
 .container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    z-index: 999;
-    /* background: red; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  /* z-index: 999; */
+  background: #17215a;
+  padding: 10px;
+  /* background: red; */
+  
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
-    
-    text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+
+  text-decoration: none;
+}
+
+.search .logo:hover {
+  color: #b7ffeb;
+  transition: ease-in 0.3s;
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li {
-    margin-left: 20px; 
-    position: relative; 
+  margin-left: 20px;
+  position: relative;
 }
 
 .nav-links a {
-    color: #ffffff; 
-    text-decoration: none; 
-    transition: color 0.3s; 
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    color: #e63946; 
+  color: #e63946;
 }
 
 
 .dropdown-menu {
-    display: none; 
-    position: absolute; 
-    top: 100%; 
-    left: 0; 
-    background-color: #1f1f1f; 
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 5px; 
-    z-index: 1000; 
-    padding: 0; 
-    margin: 0; 
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1f1f1f;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  z-index: 1000;
+  padding: 0;
+  margin: 0;
 }
 
 .dropdown:hover .dropdown-menu {
-    display: block;
+  display: block;
 }
 
 .dropdown-menu li {
-    padding: 10px 15px;
-    margin: 0;
-    list-style: none; 
+  padding: 10px 15px;
+  margin: 0;
+  list-style: none;
 }
 
 .dropdown-menu li a {
-    color: #ffffff; 
-    text-decoration: none; 
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .dropdown-menu li a:hover {
-    background-color: #e63946; 
+  background-color: #e63946;
 }
 
 .search {
-    display: flex;
+  display: flex;
 }
-.search a{
-    color: white;
+
+.search a {
+  color: white;
 }
+
 /* Magnifying glass icon styling */
 .magnifying-glass {
-    cursor: pointer;
-    font-size: 24px;
-    color: #ffffff;
-    margin-left: 15px;
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    position: relative;
-  }
-  
-  .magnifying-glass i {
-    transition: color 0.3s ease;
-    border: 1px solid #a7abbf5c;
-    padding: 5px 5px;
-    background: #8080802e;
-    border-radius: 5px;
-  }
-  
-  .magnifying-glass i:hover {
-    color: #a189ff;; /* Лупата ще стане червена при задържане */
-  }
-  
-
-  /* Search bar styling */
-  .search-bar {
-    opacity: 0; /* Скрито по подразбиране */
-    max-height: 0; /* Няма височина по подразбиране */
-    overflow: hidden; /* Скрива излишното съдържание */
-    transition: opacity 0.5s ease, max-height 0.5s ease; 
-    position: absolute;
-    left: 40px;
-    top: 0;
-  }
-  .search-bar.show {
-    opacity: 1; /* Показано */
-    max-height: 100px; /* Можеш да настроиш подходяща височина */
-    overflow: visible; /* Позволява видимост на съдържанието */
-    display: flex;
-    flex-direction: column;
-    
+  cursor: pointer;
+  font-size: 24px;
+  color: #ffffff;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  position: relative;
 }
-  .search-bar input {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: #80808059;
-    color: white
-  }
-  
-  .search-bar button {
-    padding: 8px 12px;
-    font-size: 14px;
-    background-color: #5a67d8;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+.magnifying-glass i {
+  transition: color 0.3s ease;
+  border: 1px solid #a7abbf5c;
+  padding: 5px 5px;
+  background: #8080802e;
+  border-radius: 5px;
+}
+
+.magnifying-glass i:hover {
+  color: #a189ff;
+  ;
+  /* Лупата ще стане червена при задържане */
+}
+
+
+/* Search bar styling */
+.search-bar {
+  opacity: 0;
+  /* Скрито по подразбиране */
+  max-height: 0;
+  /* Няма височина по подразбиране */
+  overflow: hidden;
+  /* Скрива излишното съдържание */
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+  position: absolute;
+  left: 40px;
+  top: 0;
+}
+
+.search-bar.show {
+  opacity: 1;
+  /* Показано */
+  max-height: 100px;
+  /* Можеш да настроиш подходяща височина */
+  overflow: visible;
+  /* Позволява видимост на съдържанието */
+  display: flex;
+  flex-direction: column;
+
+}
+
+.search-bar input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #80808059;
+  color: white
+}
+
+.search-bar button {
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #5a67d8;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.cart-count {
+  background-color: rgb(253 103 0);
+  color: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  position: relative;
+  top: -10px;
+  right: 10px;
+  font-weight: bold;
+}
+
+/* Adjustments for mobile responsiveness */
+@media (max-width: 768px) {
+  .search-bar {
     width: 100%;
+    display: block;
+    margin-top: 10px;
   }
-  .cart-count {
-    background-color: rgb(38, 0, 255);
-    color: rgb(0, 0, 0);
-    border-radius: 50%;
-    padding: 0.2rem 0.5rem;
-    font-size: 0.8rem;
-    position: relative;
-    top: -10px;
-    right: 10px;
-   
-  }
-  /* Adjustments for mobile responsiveness */
-  @media (max-width: 768px) {
-    .search-bar {
-      width: 100%;
-      display: block;
-      margin-top: 10px;
-    }
-  }
-  
+}
