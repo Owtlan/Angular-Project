@@ -33,6 +33,8 @@ export class CartService {
   updateCartItemCount(userId: string) {
     const count = this.getCartItemCount(userId);
     this.cartItemCountSubject.next(count);
+    console.log(count);
+    
   }
 
   clearCart(userId: string) {
