@@ -12,19 +12,23 @@ export class CartService {
     constructor() { }
 
 
-    addToCart(game: any) {
-        this.cartItems.push(game);
-    }
+    addToCart(game: any, userId: string) {
+        const cartItems = this.getCartItems(userId);
+        cartItems.push(game);
+        localStorage.setItem(`cart_${userId}`, JSON.stringify(cartItems));
+      }
 
-    getCartItems() {
-        return this.cartItems;
-    }
+      getCartItems(userId: string): any[] {
+        const storedCart = localStorage.getItem(`cart_${userId}`);
+        return storedCart ? JSON.parse(storedCart) : [];
+      }
 
-    getTotalPrice() {
-        return this.cartItems.reduce((sum, game) => sum + game.price, 0);
-    }
+      getTotalPrice(userId: string): number {
+        const cartItems = this.getCartItems(userId);
+        return cartItems.reduce((total, game) => total + game.price, 0);
+      }
 
-    clearCart() {
-        this.cartItems = [];
-    }
+      clearCart(userId: string) {
+        localStorage.removeItem(`cart_${userId}`);
+      }
 }

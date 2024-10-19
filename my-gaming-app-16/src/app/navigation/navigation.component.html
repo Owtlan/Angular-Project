@@ -33,5 +33,7 @@
             <li *ngIf="!isLoggedIn"><a routerLink="/register">Register</a></li>
             <li *ngIf="isLoggedIn"><a routerLink="/create">Create</a></li>
             <li *ngIf="isLoggedIn"><a (click)="logout()" routerLink="/login">Logout</a></li>
+            <li *ngIf="isLoggedIn"><a routerLink="/cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
+
         </ul>
     </div>

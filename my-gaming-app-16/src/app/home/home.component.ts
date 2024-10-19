@@ -6,6 +6,9 @@ import { Router } from '@angular/router'; // Импорт на Router
 import { Auth, user } from '@angular/fire/auth'; // Импорт на Firebase Auth
 import { addDoc } from 'firebase/firestore'; // За взимане на документ за игра
 
+//new
+import { CartService } from '../service/cart.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,7 +16,7 @@ import { addDoc } from 'firebase/firestore'; // За взимане на док�
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  
+
   @ViewChild('videoBackground') videoElement!: ElementRef;
 
   games: any[] = [];
@@ -21,8 +24,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   purchasedGames: string[] = [];        // Списък с ID на вече закупени игри
   isLoggedIn: boolean = false;          // Състояние на логин
 
-
-  constructor(private firestore: Firestore,private router: Router,private auth: Auth) { }
+  //new
+  constructor(private firestore: Firestore, private router: Router, private auth: Auth, private cartService: CartService) { }
 
 
   async ngOnInit() {
@@ -41,9 +44,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
     await this.fetchGames();
   }
 
+  //new
+  addToCart(game: any) {
+    if (this.currentUserId) {
+      this.cartService.addToCart(game, this.currentUserId);
+      alert(`${game.title} беше добавена в кошницата.`);
+    } else {
+      alert('Трябва да сте логнат, за да добавите игра в кошницата.');
+    }
+  }
 
-
-  
   ngAfterViewInit() {
     this.playVideo();
   }
@@ -83,15 +93,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
   }
 
-  async buyGame(gameId: string) {
-    if (!this.isLoggedIn) {
-      // Ако не е логнат, го пренасочваме към страницата за логин
-      this.router.navigate(['/login']);
-      return;
-    }
+  // async buyGame(gameId: string) {
+  //   if (!this.isLoggedIn) {
+  //     // Ако не е логнат, го пренасочваме към страницата за логин
+  //     this.router.navigate(['/login']);
+  //     return;
+  //   }
 
-    this.router.navigate(['/order'], { queryParams: { gameId: gameId } });
-  }
+  //   this.router.navigate(['/order'], { queryParams: { gameId: gameId } });
+  // }
 
 
   isGamePurchased(gameId: string): boolean {

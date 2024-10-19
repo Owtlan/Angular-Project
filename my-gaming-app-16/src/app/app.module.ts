@@ -22,6 +22,7 @@ import { GamesComponent } from './games/games.component';
 
 import { EditGameComponent } from './edit-game/edit-game.component';
 import { OrderComponent } from './order/order.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -38,6 +39,7 @@ import { OrderComponent } from './order/order.component';
     GamesComponent,
     EditGameComponent,
     OrderComponent,
+    CartComponent,
  
   ],
   imports: [

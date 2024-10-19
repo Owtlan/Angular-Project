@@ -21,12 +21,17 @@
                     <div class="button-section">
                         <a [routerLink]="['/games/details', game.id]"
                             class="details-button animate__animated animate__pulse">Details</a>
-
+                        <!-- new -->
                         <button *ngIf="isLoggedIn && !isGameCreatedByUser(game) && !isGamePurchased(game.id)"
+                            (click)="addToCart(game)" class="add-to-cart-button">
+                            Add to Cart
+                        </button>
+
+                        <!-- <button *ngIf="isLoggedIn && !isGameCreatedByUser(game) && !isGamePurchased(game.id)"
                             (click)="buyGame(game.id)" class="buy-button animate__animated animate__pulse">
                             Buy Game
-                        </button>
-                     
+                        </button> -->
+
 
                     </div>
                 </div>

@@ -1,23 +1,35 @@
 <div class="order-form">
-    <h2>Поръчка на игра</h2>
+  <h2>Поръчка на игри</h2>
+  <div *ngIf="cartItems.length > 0; else emptyCart">
+    <div *ngFor="let game of cartItems">
+      <p>{{ game.title }} - ${{ game.price }}</p>
+    </div>
+    <p><strong>Total Price: ${{ totalPrice }}</strong></p>
+
     <form (ngSubmit)="submitOrder()">
       <div>
         <label for="name">Имена:</label>
-        <input id="name" [(ngModel)]="name" name="name" required>
+        <input id="name" [(ngModel)]="name" name="name" required />
       </div>
       <div>
         <label for="email">Имейл адрес:</label>
-        <input id="email" [(ngModel)]="email" name="email" type="email" required>
+        <input id="email" [(ngModel)]="email" name="email" type="email" required />
       </div>
       <div>
         <label for="street">Улица:</label>
-        <input id="street" [(ngModel)]="street" name="street" required>
+        <input id="street" [(ngModel)]="street" name="street" required />
       </div>
       <div>
         <label for="phone">Телефонен номер:</label>
-        <input id="phone" [(ngModel)]="phone" name="phone" required>
+        <input id="phone" [(ngModel)]="phone" name="phone" required />
       </div>
       <button type="submit">Потвърди поръчката</button>
     </form>
   </div>
+
+  <ng-template #emptyCart>
+    <p>Your cart is empty. Add games before proceeding to order.</p>
+  </ng-template>
+</div>
+
   
