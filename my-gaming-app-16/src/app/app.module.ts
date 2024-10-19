@@ -24,6 +24,7 @@ import { EditGameComponent } from './edit-game/edit-game.component';
 import { OrderComponent } from './order/order.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,6 @@ import { OrderComponent } from './order/order.component';
     GamesComponent,
     EditGameComponent,
     OrderComponent,
-
  
   ],
   imports: [
