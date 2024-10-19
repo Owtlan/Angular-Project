@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Auth, onAuthStateChanged, User } from '@angular/fire/auth'
+import { Auth, onAuthStateChanged, User } from '@angular/fire/auth';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CartService } from '../service/cart.service';
 
@@ -24,8 +24,6 @@ import { CartService } from '../service/cart.service';
     ])
   ]
 })
-
-
 export class NavigationComponent {
   isLoggedIn = false;
   isSearchVisible = false;
@@ -46,9 +44,16 @@ export class NavigationComponent {
     });
 
     this.cartService.cartItemCount$.subscribe(count => {
-      this.cartItemCount = count;
+      this.cartItemCount = count; // Актуализирайте cartItemCount
+    });
+
+    // Слушайте за изчистване на количката
+    this.cartService.cartCleared$.subscribe(() => {
+      this.cartItemCount = 0; // Занулява брояча при изчистване
+      console.log('Cart cleared, item count set to 0');
     });
   }
+
   updateCartItemCount() {
     if (this.currentUserId) {
       this.cartItemCount = this.cartService.getCartItemCount(this.currentUserId);
@@ -56,9 +61,6 @@ export class NavigationComponent {
     }
   }
 
-  updateCountOnAdd() {
-    this.updateCartItemCount(); // Обновява брояча
-  }
   toggleSearch() {
     this.isSearchVisible = !this.isSearchVisible;
   }

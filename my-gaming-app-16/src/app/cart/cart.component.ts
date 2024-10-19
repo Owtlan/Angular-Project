@@ -8,11 +8,10 @@ import { Auth } from '@angular/fire/auth';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-
 export class CartComponent implements OnInit {
 
-  cartItems: any[] = []
-  totalPrice: number = 0
+  cartItems: any[] = [];
+  totalPrice: number = 0;
   userId: string | null = null;
 
   constructor(private cartService: CartService, private router: Router, private auth: Auth) { }

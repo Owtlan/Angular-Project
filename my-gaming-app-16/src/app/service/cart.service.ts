@@ -1,45 +1,48 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject } from 'rxjs'
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-
-
 export class CartService {
   private cartItems: { [userId: string]: any[] } = {};
   private cartItemCountSubject = new BehaviorSubject<number>(0);
-  cartItemCount$ = this.cartItemCountSubject.asObservable();
+  private cartClearedSubject = new BehaviorSubject<boolean>(false); // Добавяме Subject за изчистване на количката
 
+  cartItemCount$ = this.cartItemCountSubject.asObservable();
+  cartCleared$ = this.cartClearedSubject.asObservable(); // Обсервируем промените
 
   constructor() { }
 
-
-addToCart(game: any, userId: string): void {
+  addToCart(game: any, userId: string): void {
     if (!this.cartItems[userId]) {
       this.cartItems[userId] = [];
     }
     this.cartItems[userId].push(game);
-    this.cartItemCountSubject.next(this.getCartItemCount(userId)); // Обновете брояча
+    this.updateCartItemCount(userId);
   }
 
   getCartItems(userId: string): any[] {
     return this.cartItems[userId] || [];
   }
+
   getCartItemCount(userId: string): number {
-    const count = this.cartItems[userId] ? this.cartItems[userId].length : 0;
-    console.log(`User ${userId} cart item count:`, count); // Отстраняване на проблеми
-    return count;
+    return this.cartItems[userId] ? this.cartItems[userId].length : 0;
   }
-  getTotalPrice(userId: string): number {
-    const cartItems = this.getCartItems(userId);
-    return cartItems.reduce((total, game) => total + game.price, 0);
+
+  updateCartItemCount(userId: string) {
+    const count = this.getCartItemCount(userId);
+    this.cartItemCountSubject.next(count);
   }
-  updateCartItemCount(userId: string): number {
-    return this.getCartItemCount(userId);
-}
+
   clearCart(userId: string) {
     this.cartItems[userId] = [];
-    localStorage.removeItem(`cart_${userId}`);
+    this.updateCartItemCount(userId);
+    this.cartClearedSubject.next(true); // Уведомяване, че количката е изчистена
+  }
+
+  getTotalPrice(userId: string): number {
+    const items = this.getCartItems(userId);
+    return items.reduce((total, item) => total + item.price, 0);
   }
 }
