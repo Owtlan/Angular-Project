@@ -18,10 +18,10 @@ export class AppComponent {
     user(this.auth).subscribe(user => {
       if (user) {
         this.currentUserId = user.uid;
-        this.cartService.clearCart(this.currentUserId); // Изчистване на кошницата при нов вход
+        // this.cartService.clearCart(this.currentUserId); // Изчистване на кошницата при нов вход
       } else {
         this.currentUserId = null;
-        this.cartService.clearCart('guest'); // Изчистване на кошницата при изход
+        // this.cartService.clearCart('guest'); // Изчистване на кошницата при изход
       }
     });
   }

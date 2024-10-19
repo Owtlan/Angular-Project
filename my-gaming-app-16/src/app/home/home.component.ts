@@ -47,12 +47,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
   //new
   addToCart(game: any) {
     if (this.currentUserId) {
-      this.cartService.addToCart(game, this.currentUserId);
-      alert(`${game.title} беше добавена в кошницата.`);
+        this.cartService.addToCart(game, this.currentUserId);
+        this.cartService.updateCartItemCount(this.currentUserId); // Добавете тази линия
+        alert(`${game.title} беше добавена в кошницата.`);
+
+        
     } else {
-      alert('Трябва да сте логнат, за да добавите игра в кошницата.');
+        alert('Трябва да сте логнат, за да добавите игра в кошницата.');
     }
-  }
+}
 
   ngAfterViewInit() {
     this.playVideo();
