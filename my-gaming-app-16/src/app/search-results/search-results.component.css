@@ -1,0 +1,88 @@
+/* Основен стил за заглавието на страницата */
+h2 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2.5rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Контейнер за резултатите от търсенето */
+  .search-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Стил за всеки елемент на играта */
+  .game-item {
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 15px 0;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  /* Променя стила при задържане на курсора */
+  .game-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Стил за изображението на играта */
+  .game-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  /* Стил за заглавието на играта */
+  .game-item h3 {
+    margin: 15px 0 10px;
+    color: #007bff;
+    font-size: 1.5rem;
+  }
+  
+  /* Стил за описанието на играта */
+  .game-item p {
+    margin: 5px 0;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /* Стил за цената на играта */
+  .game-item p.price {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Стил за линка към детайлите на играта */
+  .game-item a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    color: white;
+    background-color: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  /* Променя цвета на линка при задържане на курсора */
+  .game-item a:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  /* Стил за съобщението при зареждане */
+  .loading-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+  }
+  

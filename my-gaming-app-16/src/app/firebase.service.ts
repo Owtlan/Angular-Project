@@ -12,7 +12,19 @@ export class FirebaseService {
   //   throw new Error('Method not implemented.');
   // }
   constructor(public firestore: Firestore) { }
+  searchGamesByName(name: string): Observable<Game[]> {
+    // Създаване на референция към колекцията 'games'
+    const gamesCollection = collection(this.firestore, 'games');
+    // Създаване на заявка за търсене по заглавие
+    const q = query(
+      gamesCollection,
+      where('title', '>=', name),
+      where('title', '<=', name + '\uf8ff')
+    );
 
+    // Връщане на Observable с игрите, които отговарят на заявката
+    return collectionData(q, { idField: 'id' }) as Observable<Game[]>;
+  }
   // Връщаме Observable за игрите с конкретната категория
   getGamesByCategory(category: string): Observable<Game[]> {
     const gamesCollection = collection(this.firestore, 'games');
@@ -42,13 +54,13 @@ export class FirebaseService {
       const ordersCollection = collection(this.firestore, 'orders');
       const docRef = await addDoc(ordersCollection, {
         ...order,
-        createdAt: new Date() 
+        createdAt: new Date()
       });
       console.log('Order added with ID: ', docRef.id);
-      return docRef.id; 
+      return docRef.id;
     } catch (error) {
       console.error('Error creating order:', error);
-      return null; 
+      return null;
     }
   }
 

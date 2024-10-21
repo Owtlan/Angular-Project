@@ -23,6 +23,7 @@ import { GamesComponent } from './games/games.component';
 import { EditGameComponent } from './edit-game/edit-game.component';
 import { OrderComponent } from './order/order.component';
 import { CartComponent } from './cart/cart.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 
 
@@ -40,6 +41,7 @@ import { CartComponent } from './cart/cart.component';
     EditGameComponent,
     OrderComponent,
     CartComponent,
+    SearchResultsComponent,
  
   ],
   imports: [

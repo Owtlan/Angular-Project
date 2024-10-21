@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Auth, onAuthStateChanged, User } from '@angular/fire/auth';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CartService } from '../service/cart.service';
+import { FirebaseService } from '../firebase.service'; // Импортирайте вашия FirebaseService
+import { Router } from '@angular/router'; // Импортирайте Router
+
 
 @Component({
   selector: 'app-navigation',
@@ -29,8 +32,9 @@ export class NavigationComponent {
   isSearchVisible = false;
   cartItemCount: number = 0;
   currentUserId: string | null = null;
+  searchQuery: string = '';
 
-  constructor(private auth: Auth, private cartService: CartService) {
+  constructor(private auth: Auth, private cartService: CartService, private firebaseService: FirebaseService, private router: Router) {
     onAuthStateChanged(this.auth, (user: User | null) => {
       if (user) {
         this.isLoggedIn = true;
@@ -67,5 +71,12 @@ export class NavigationComponent {
 
   logout() {
     this.auth.signOut();
+  }
+
+  searchGames() {
+    if (this.searchQuery.trim()) {
+      // Преминете към страницата с резултатите от търсенето
+      this.router.navigate(['/search'], { queryParams: { query: this.searchQuery } });
+    }
   }
 }
