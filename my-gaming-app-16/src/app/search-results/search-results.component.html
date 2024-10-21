@@ -6,9 +6,20 @@
         <h3>{{ game.title }}</h3>
         <p>{{ game.description }}</p>
         <p class="price">Price: ${{ game.price }}</p>
-        <a [routerLink]="['/games', game.id]">View Details</a>
+
+        <div class="button-section">
+          <!-- Бутон за детайли -->
+          <a [routerLink]="['/games/details', game.id]" class="details-button">Details</a>
+      
+          <!-- Бутон за добавяне в количката -->
+          <button *ngIf="isLoggedIn && !isGameCreatedByUser(game) && !isGamePurchased(game.id ?? '')"
+                  (click)="addToCart(game)" class="add-to-cart-button">
+            Add to Cart
+          </button>
+        </div>
     </div>
 </div>
 <ng-template #loading>
     <p class="loading-message">Loading results...</p>
 </ng-template>
+

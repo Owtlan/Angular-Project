@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 import { Game } from '../model/game.model';
 import { Observable } from 'rxjs';
+import { CartService } from '../service/cart.service'; // Услуга за количката
+import { Auth, user } from '@angular/fire/auth';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 @Component({
   selector: 'app-search-results',
@@ -11,8 +14,13 @@ import { Observable } from 'rxjs';
 })
 export class SearchResultsComponent implements OnInit {
   games$: Observable<Game[]> | null = null;
+  isLoggedIn: boolean = false;
+  currentUserId: string | null = null;
+  purchasedGames: string[] = []
 
-  constructor(private route: ActivatedRoute, private firebaseService: FirebaseService) {}
+
+  constructor(private route: ActivatedRoute, private firebaseService: FirebaseService, private cartService: CartService,
+    private auth: Auth) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -21,5 +29,43 @@ export class SearchResultsComponent implements OnInit {
         this.games$ = this.firebaseService.searchGamesByName(query);
       }
     });
+    user(this.auth).subscribe(user => {
+      if (user) {
+        this.isLoggedIn = true;
+        this.currentUserId = user.uid;
+        this.loadPurchasedGames(); // Зареждане на поръчаните игри
+      } else {
+        this.isLoggedIn = false;
+        this.currentUserId = null;
+      }
+    });
+  }
+
+  addToCart(game: Game) {
+    if (this.currentUserId) {
+      this.cartService.addToCart(game, this.currentUserId);
+      this.cartService.updateCartItemCount(this.currentUserId); // Ъпдейтваме брояча на количката
+      alert(`${game.title} беше добавена в количката.`);
+    } else {
+      alert('Трябва да сте логнат, за да добавите игра в количката.');
+    }
+  }
+
+  async loadPurchasedGames() {
+    if (!this.currentUserId) return;
+
+    const ordersCollection = collection(this.firebaseService.firestore, 'orders');
+    const q = query(ordersCollection, where('userId', '==', this.currentUserId));
+    const ordersSnapshot = await getDocs(q);
+
+    this.purchasedGames = ordersSnapshot.docs.map(doc => doc.data()['gameId']);
+  }
+
+  isGamePurchased(gameId: string): boolean {
+    return this.purchasedGames.includes(gameId);
+  }
+
+  isGameCreatedByUser(game: Game): boolean {
+    return this.currentUserId === game.creatorId;
   }
 }
