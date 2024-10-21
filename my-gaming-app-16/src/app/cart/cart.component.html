@@ -12,8 +12,8 @@
     </div>
     <hr />
     <p><strong>Total Price: ${{ totalPrice.toFixed(2) }}</strong></p>
-    <button (click)="proceedToOrder()">Proceed to Order</button>
-    <button (click)="clearCart()">Clear Cart</button>
+    <button class="order-btn" (click)="proceedToOrder()">Proceed to Order</button>
+    <button class="clear-cart-btn" (click)="clearCart()">Clear Cart</button>
   </div>
 
   <ng-template #emptyCart>

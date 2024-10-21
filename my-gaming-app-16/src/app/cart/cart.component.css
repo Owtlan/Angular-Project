@@ -71,15 +71,15 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+.order-btn:hover {
     background-color: #0056b3;
 }
 
-button:last-child {
+.clear-cart-btn:last-child {
     background-color: #dc3545;
 }
 
-button:last-child:hover {
+.clear-cart-btn:last-child:hover {
     background-color: #c82333;
 }
 
@@ -101,17 +101,19 @@ p {
 }
 
 .remove-btn:hover {
-    background-color: #555;
-    transform: scale(1.1);
+    transform: scale(1.2);
     transition: background-color 0.3s ease, transform 0.3s ease;
-
+    
 }
 
 .remove-btn {
     cursor: pointer;
+    margin: 0;
+    padding: 0;
+    background: none;
+    color: black;
 }
 
 remove-btn:active {
-    background-color: #d50000;
     transform: scale(0.95);
 }
