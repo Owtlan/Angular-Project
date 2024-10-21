@@ -76,6 +76,67 @@
     margin-top: 50px;
 }
 
+.button-section {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.details-button, .add-to-cart-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.details-button {
+    background: linear-gradient(90deg, #3a8dff 0%, #0056d8 100%);
+    color: white;
+    text-decoration: none;
+}
+
+.add-to-cart-button {
+    background: linear-gradient(90deg, #ff7a3a 0%, #ff3e00 100%);
+    color: white;
+}
+
+.details-button:hover, .add-to-cart-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.details-button::before, .add-to-cart-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: transform 0.5s ease;
+    transform: rotate(45deg) translate(-150%, -150%);
+    z-index: -1;
+}
+
+.details-button:hover::before, .add-to-cart-button:hover::before {
+    transform: rotate(45deg) translate(150%, 150%);
+}
+
+.details-button:active, .add-to-cart-button:active {
+    transform: translateY(0px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
 @media (max-width: 768px) {
     .games-list {
         flex-direction: column;
