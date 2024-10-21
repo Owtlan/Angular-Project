@@ -74,7 +74,8 @@ export class CreateComponent implements AfterViewInit {
       price: this.price,
       category: this.category,
       imageUrl: '',
-      creatorId: user.uid
+      creatorId: user.uid,
+      createdAt: new Date()
     };
 
 

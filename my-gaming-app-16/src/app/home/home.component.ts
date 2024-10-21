@@ -8,6 +8,7 @@ import { Auth, user } from '@angular/fire/auth'; // Импорт на Firebase A
 
 //new
 import { CartService } from '../service/cart.service';
+import { orderBy } from 'firebase/firestore';
 
 @Component({
   selector: 'app-home',
@@ -47,15 +48,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
   //new
   addToCart(game: any) {
     if (this.currentUserId) {
-        this.cartService.addToCart(game, this.currentUserId);
-        this.cartService.updateCartItemCount(this.currentUserId); // Добавете тази линия
-        alert(`${game.title} беше добавена в кошницата.`);
+      this.cartService.addToCart(game, this.currentUserId);
+      this.cartService.updateCartItemCount(this.currentUserId); // Добавете тази линия
+      alert(`${game.title} беше добавена в кошницата.`);
 
-        
+
     } else {
-        alert('Трябва да сте логнат, за да добавите игра в кошницата.');
+      alert('Трябва да сте логнат, за да добавите игра в кошницата.');
     }
-}
+  }
 
   ngAfterViewInit() {
     this.playVideo();
@@ -63,7 +64,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   async fetchGames() {
     const gamesCollection = collection(this.firestore, 'games');
-    const gamesQuery = query(gamesCollection, limit(12))
+    const gamesQuery = query(gamesCollection, orderBy('createdAt', 'desc'), limit(6))
     const gamesSnapshot = await getDocs(gamesQuery);
     this.games = gamesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   }
