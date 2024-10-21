@@ -77,6 +77,9 @@ export class NavigationComponent {
     if (this.searchQuery.trim()) {
       // Преминете към страницата с резултатите от търсенето
       this.router.navigate(['/search'], { queryParams: { query: this.searchQuery } });
+
+      this.isSearchVisible = false;
+      this.searchQuery = ''; // Изчистете текста
     }
   }
 }
