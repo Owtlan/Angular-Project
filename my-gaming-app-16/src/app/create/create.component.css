@@ -24,7 +24,7 @@ body {
 }
 
 .create-container {
-
+    text-align: center;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.8);
     /* Прозрачен фон за контейнера */
@@ -38,7 +38,9 @@ body {
     z-index: 2;
     /* Изтласква контейнера над фона */
 }
-
+.create-container h1{
+    color: antiquewhite;
+}
 .video-background {
     position: absolute;
     /* Позволява видеото да се позиционира относително на родителския контейнер */
@@ -83,15 +85,20 @@ body {
     border-radius: 10px;
 }
 
-.form-group input{
+.form-group input {
     background: #ffffff26;
 }
-.form-group textarea{
+.form-group label{
+    color: antiquewhite;
+}
+.form-group textarea {
     background: #ffffff26;
 }
-.form-group select{
+
+.form-group select {
     background: #ffffff26;
 }
+
 label {
     display: block;
     margin-bottom: 5px;
@@ -144,9 +151,21 @@ textarea {
     display: flex;
     flex-direction: column;
 }
-.form-group img{
-    width: 25px;
+
+#form-group img {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    padding: 5px 15px;
+    background: #0000009c;
+    margin-top: 15px;
 }
+
+#form-group label {
+    text-align: center;
+    margin: 0 auto;
+}
+
 input[type="text"],
 input[type="number"],
 textarea,

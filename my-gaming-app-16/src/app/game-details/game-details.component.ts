@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FirebaseService } from '../firebase.service'; 
+import { FirebaseService } from '../firebase.service';
 import { Observable } from 'rxjs';
-import { Game } from '../model/game.model'; 
-import { Auth } from '@angular/fire/auth'; 
+import { Game } from '../model/game.model';
+import { Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,7 +26,7 @@ export class GameDetailsComponent implements OnInit {
   ngOnInit(): void {
 
     this.auth.onAuthStateChanged(user => {
-      this.currentUserId = user ? user.uid : null; 
+      this.currentUserId = user ? user.uid : null;
     });
 
     this.route.paramMap.subscribe(params => {
@@ -36,7 +36,6 @@ export class GameDetailsComponent implements OnInit {
           this.gameData = data;
         });
       }
-      
     });
   }
 
@@ -57,7 +56,7 @@ export class GameDetailsComponent implements OnInit {
   deleteGame() {
     if (this.gameId) {
       this.firebaseService.deleteGame(this.gameId).then(() => {
-        this.router.navigate(['/']); 
+        this.router.navigate(['/']);
       }).catch((error: any) => {
         console.error('Error deleting game:', error);
       });
@@ -69,5 +68,5 @@ export class GameDetailsComponent implements OnInit {
   // buyGame() {
   //   this.router.navigate(['/order'], { queryParams: { gameId: this.gameId } }); 
   // }
-  
+
 }
