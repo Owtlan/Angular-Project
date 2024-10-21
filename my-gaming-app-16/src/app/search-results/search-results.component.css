@@ -85,4 +85,32 @@ h2 {
     font-size: 1.2rem;
     color: #666;
   }
-  
+  .add-to-cart-button {
+    background-color: #ff4081; /* Ярък фон */
+    color: white; /* Цвят на текста */
+    border: none; /* Без рамка */
+    border-radius: 5px; /* Закръглени ъгли */
+    padding: 10px 15px;
+    font-weight: bold; /* Удебелен текст */
+    cursor: pointer; /* Курсор при задържане */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Преходи за ефекти */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Лека сянка */
+    
+}
+
+.add-to-cart-button:hover {
+    background-color: #ff79b0; /* Променяме цвета при задържане */
+    transform: scale(1.05); /* Леко увеличаване */
+}
+
+.add-to-cart-button:active {
+    transform: scale(0.95); /* Малко намаляване при клик */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Промяна на сянката при клик */
+}
+.button-section .details-button{
+  margin-top: 0;
+}
+.button-section{
+  display: flex;
+    justify-content: space-between;
+}
