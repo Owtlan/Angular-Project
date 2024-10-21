@@ -4,7 +4,7 @@ import { Firestore, doc, getDocs, collection, query, where, limit } from '@angul
 // import { collection, getDocs, limit, query } from 'firebase/firestore';
 import { Router } from '@angular/router'; // Импорт на Router
 import { Auth, user } from '@angular/fire/auth'; // Импорт на Firebase Auth
-import { addDoc } from 'firebase/firestore'; // За взимане на документ за игра
+// import { addDoc } from 'firebase/firestore'; // За взимане на документ за игра
 
 //new
 import { CartService } from '../service/cart.service';

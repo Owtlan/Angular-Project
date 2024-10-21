@@ -11,7 +11,7 @@ export class FirebaseService {
   // deleteGame(gameId: string | null) {
   //   throw new Error('Method not implemented.');
   // }
-  constructor(private firestore: Firestore) { }
+  constructor(public firestore: Firestore) { }
 
   // Връщаме Observable за игрите с конкретната категория
   getGamesByCategory(category: string): Observable<Game[]> {

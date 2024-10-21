@@ -7,10 +7,22 @@
         <h3>{{ game.title }}</h3>
         <p>{{ game.description }}</p>
         <p class="price">Price: ${{ game.price }}</p>
+
+        <div class="button-section">
+          <!-- Бутон за детайли -->
+          <a [routerLink]="['/games/details', game.id]" class="details-button">Details</a>
+      
+          <!-- Бутон за добавяне в количката (само ако е логнат потребителят и не е закупил или създал играта) -->
+          <button *ngIf="isLoggedIn && !isGameCreatedByUser(game) && !isGamePurchased(game.id ?? '')"
+                  (click)="addToCart(game)" class="add-to-cart-button">
+            Add to Cart
+          </button>
+        </div>
+
       </li>
     </ul>
   </div>
-
+ 
   <ng-template #noGames>
     <p class="no-games">No games available in this category.</p>
   </ng-template>
