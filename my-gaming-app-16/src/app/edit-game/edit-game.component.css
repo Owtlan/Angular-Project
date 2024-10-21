@@ -1,0 +1,110 @@
+/* Общ контейнер за формата */
+.edit-game-container {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+.edit-game-container h2 {
+    text-align: center;
+    color: #ff3e00;
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.edit-game-form .form-group {
+    margin-bottom: 15px;
+}
+
+.edit-game-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.edit-game-form input[type="text"], 
+.edit-game-form input[type="number"], 
+.edit-game-form textarea {
+    width: 100%;
+    padding: 12px 0px;
+    border-radius: 8px;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.edit-game-form input[type="text"]:focus,
+.edit-game-form input[type="number"]:focus,
+.edit-game-form textarea:focus {
+    border-color: #ff3e00;
+}
+
+.edit-game-form textarea {
+    height: 120px;
+    resize: none;
+}
+
+.save-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff3e00;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #e63600;
+    box-shadow: 0 4px 15px rgba(255, 62, 0, 0.5);
+}
+
+.save-button:active {
+    background-color: #cc2f00;
+}
+
+.loading-container p {
+    text-align: center;
+    color: #ff3e00;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Занимава цялата височина на видимата част на екрана */
+    color: #ff3e00;
+}
+
+.loader {
+    border: 8px solid #f3f3f3; /* Светло сиво */
+    border-top: 8px solid #ff3e00; /* Оранжево */
+    border-radius: 50%;
+    width: 50px; /* Ширина на loader-а */
+    height: 50px; /* Височина на loader-а */
+    animation: spin 1s linear infinite; /* Анимация */
+    margin-bottom: 20px; /* Разстояние между loader-а и текста */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -1,27 +1,41 @@
-<div *ngIf="gameData">
-    <h2>Edit Game</h2>
-    
-    <form (ngSubmit)="updateGame()">
+<div *ngIf="gameData; else loading" class="edit-game-container">
+  <h2>Edit Game</h2>
+  
+  <form (ngSubmit)="updateGame()" class="edit-game-form">
+    <div class="form-group">
       <label for="title">Title:</label>
       <input type="text" id="title" [(ngModel)]="gameData.title" name="title" required>
-      
+    </div>
+    
+    <div class="form-group">
       <label for="description">Description:</label>
       <textarea id="description" [(ngModel)]="gameData.description" name="description" required></textarea>
-      
+    </div>
+    
+    <div class="form-group">
       <label for="price">Price:</label>
       <input type="number" id="price" [(ngModel)]="gameData.price" name="price" required>
-  
+    </div>
+
+    <div class="form-group">
       <label for="category">Category:</label>
       <input type="text" id="category" [(ngModel)]="gameData.category" name="category" required>
-      
+    </div>
+    
+    <div class="form-group">
       <label for="imageUrl">Image URL:</label>
       <input type="text" id="imageUrl" [(ngModel)]="gameData.imageUrl" name="imageUrl">
-      
-      <button type="submit">Save Changes</button>
-    </form>
+    </div>
+    
+    <button type="submit" class="save-button">Save Changes</button>
+  </form>
+</div>
+
+<ng-template #loading>
+  <div class="loading-container">
+      <div class="loader"></div>
+      <p>Loading game details...</p>
   </div>
-  
-  <div *ngIf="!gameData">
-    <p>Loading game details...</p>
-  </div>
+</ng-template>
+
   

@@ -5,5 +5,5 @@ export interface Game {
     price: number;
     category: string;
     imageUrl: string;
-    creatorId: string
+    creatorId: string;
 }

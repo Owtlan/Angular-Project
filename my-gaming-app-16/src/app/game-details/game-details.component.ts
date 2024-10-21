@@ -36,6 +36,7 @@ export class GameDetailsComponent implements OnInit {
           this.gameData = data;
         });
       }
+      
     });
   }
 
