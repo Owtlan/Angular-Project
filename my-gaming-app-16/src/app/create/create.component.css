@@ -40,6 +40,7 @@ body {
 }
 .create-container h1{
     color: antiquewhite;
+    padding-bottom: 40px;
 }
 .video-background {
     position: absolute;
