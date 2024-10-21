@@ -94,3 +94,24 @@ p {
 .cart-container .emptyCart p {
     color: #999;
 }
+
+/* button for removing single cart item */
+.remove-section {
+    padding: 20px;
+}
+
+.remove-btn:hover {
+    background-color: #555;
+    transform: scale(1.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+}
+
+.remove-btn {
+    cursor: pointer;
+}
+
+remove-btn:active {
+    background-color: #d50000;
+    transform: scale(0.95);
+}

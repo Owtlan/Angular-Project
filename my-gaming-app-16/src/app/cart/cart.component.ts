@@ -35,4 +35,13 @@ export class CartComponent implements OnInit {
       this.totalPrice = 0;
     }
   }
+
+  removeFromCart(index: number): void {
+    if (this.userId) {
+      this.cartService.removeFromCart(index, this.userId)
+      this.cartItems = this.cartService.getCartItems(this.userId)
+      this.totalPrice = this.cartService.getTotalPrice(this.userId); // Обновяваме цената
+
+    }
+  }
 }

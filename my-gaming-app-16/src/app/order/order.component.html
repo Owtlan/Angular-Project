@@ -4,7 +4,7 @@
     <div *ngFor="let game of cartItems">
       <p>{{ game.title }} - ${{ game.price }}</p>
     </div>
-    <p><strong>Total Price: ${{ totalPrice }}</strong></p>
+    <p><strong>Total Price: ${{ totalPrice.toFixed(2) }}</strong></p>
 
     <form (ngSubmit)="submitOrder()">
       <div>

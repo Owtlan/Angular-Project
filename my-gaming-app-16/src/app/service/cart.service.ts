@@ -7,10 +7,10 @@ import { BehaviorSubject } from 'rxjs';
 export class CartService {
   private cartItems: { [userId: string]: any[] } = {};
   private cartItemCountSubject = new BehaviorSubject<number>(0);
-  private cartClearedSubject = new BehaviorSubject<boolean>(false); // Добавяме Subject за изчистване на количката
+  private cartClearedSubject = new BehaviorSubject<boolean>(false); 
 
   cartItemCount$ = this.cartItemCountSubject.asObservable();
-  cartCleared$ = this.cartClearedSubject.asObservable(); // Обсервируем промените
+  cartCleared$ = this.cartClearedSubject.asObservable(); 
 
   constructor() { }
 
@@ -34,17 +34,25 @@ export class CartService {
     const count = this.getCartItemCount(userId);
     this.cartItemCountSubject.next(count);
     console.log(count);
-    
+
   }
 
   clearCart(userId: string) {
     this.cartItems[userId] = [];
     this.updateCartItemCount(userId);
-    this.cartClearedSubject.next(true); // Уведомяване, че количката е изчистена
+    this.cartClearedSubject.next(true);
   }
 
   getTotalPrice(userId: string): number {
     const items = this.getCartItems(userId);
     return items.reduce((total, item) => total + item.price, 0);
+  }
+
+  //remove single target from cart
+  removeFromCart(index: number, userId: string): void {
+    if (this.cartItems[userId]) {
+      this.cartItems[userId].splice(index, 1)
+      this.updateCartItemCount(userId)
+    }
   }
 }
