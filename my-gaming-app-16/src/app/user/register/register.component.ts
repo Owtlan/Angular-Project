@@ -1,8 +1,8 @@
 import { Component,AfterViewInit,ViewChild, ElementRef } from '@angular/core';
 
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
-import { Firestore, doc, setDoc } from '@angular/fire/firestore'; // За Firestore
-import { Router } from '@angular/router'; // За пренасочване след успешна регистрация
+import { Firestore, doc, setDoc } from '@angular/fire/firestore'; 
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-register',
@@ -42,7 +42,7 @@ export class RegisterComponent implements AfterViewInit{
       .then((userCredential) => {
         const user = userCredential.user;
 
-        // Записване на потребителя в Firestore
+
         const userDocRef = doc(this.firestore, 'users', user.uid);
         return setDoc(userDocRef, {
           email: this.email,
@@ -51,7 +51,7 @@ export class RegisterComponent implements AfterViewInit{
       })
       .then(() => {
         console.log('User registered and data saved to Firestore');
-        this.router.navigate(['/']); // Пренасочване след успешна регистрация
+        this.router.navigate(['/']);
       })
       .catch((error) => {
         console.error('Error registering user: ', error);
