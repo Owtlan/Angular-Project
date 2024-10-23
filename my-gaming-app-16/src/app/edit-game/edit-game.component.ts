@@ -24,27 +24,12 @@ export class EditGameComponent implements OnInit {
       this.gameId = params.get('id');
       if (this.gameId) {
         this.firebaseService.getGameById(this.gameId).subscribe(data => {
-          this.gameData = data; // Зареждане на текущите данни за играта
+          this.gameData = data; 
         });
       }
     });
   }
 
-  // loadGameData() {
-  //   // Симулирай забавяне с 2 секунди
-  //   setTimeout(() => {
-  //     // Тук добави логиката за зареждане на данните на играта
-  //     // Например:
-  //     this.gameData = {
-  //       title: 'Example Game',
-  //       description: 'This is an example game description.',
-  //       price: 59.99,
-  //       category: 'Action',
-  //       imageUrl: 'http://example.com/image.jpg',
-  //       creatorId: 'example-creator-id'
-  //     };
-  //   }, 2000); // 2000 милисекунди = 2 секунди
-  // }
 
 
   updateGame() {

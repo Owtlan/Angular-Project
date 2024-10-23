@@ -1,4 +1,4 @@
-/* Общ контейнер за формата */
+
 .edit-game-container {
     background-color: #1a1a1a;
     padding: 20px;
@@ -90,18 +90,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Занимава цялата височина на видимата част на екрана */
+    height: 100vh; 
     color: #ff3e00;
 }
 
 .loader {
-    border: 8px solid #f3f3f3; /* Светло сиво */
-    border-top: 8px solid #ff3e00; /* Оранжево */
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #ff3e00; 
     border-radius: 50%;
-    width: 50px; /* Ширина на loader-а */
-    height: 50px; /* Височина на loader-а */
-    animation: spin 1s linear infinite; /* Анимация */
-    margin-bottom: 20px; /* Разстояние между loader-а и текста */
+    width: 50px; 
+    height: 50px; 
+    animation: spin 1s linear infinite; 
+    margin-bottom: 20px; 
 }
 
 @keyframes spin {
