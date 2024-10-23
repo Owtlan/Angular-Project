@@ -15,18 +15,17 @@ export class GameService {
         const gameSnapshot = await getDoc(gameRef);
 
         if (gameSnapshot.exists()) {
-            console.log('Game exists:', gameSnapshot.data()); // Проверка на данните
-            return { id: gameSnapshot.id, ...gameSnapshot.data() }; // Връщайте и ID-то на играта
+            console.log('Game exists:', gameSnapshot.data());
+            return { id: gameSnapshot.id, ...gameSnapshot.data() };
         } else {
-            console.error('No such document! ID:', gameId); // Лог на ID-то
+            console.error('No such document! ID:', gameId); 
             return null;
         }
     }
 
-    // Добавете този метод
     async getGamesByCategory(category: string): Promise<any[]> {
         const gamesRef = collection(this.firestore, 'games');
-        const q = query(gamesRef, where('category', '==', category)); // Предполага се, че имате поле category в игрите
+        const q = query(gamesRef, where('category', '==', category)); 
         const querySnapshot = await getDocs(q);
 
         const games = querySnapshot.docs.map(doc => ({
