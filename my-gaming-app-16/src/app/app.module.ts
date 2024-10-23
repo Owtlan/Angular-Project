@@ -24,6 +24,7 @@ import { EditGameComponent } from './edit-game/edit-game.component';
 import { OrderComponent } from './order/order.component';
 import { CartComponent } from './cart/cart.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { PriceFilterComponent } from './price-filter/price-filter.component';
 
 
 
@@ -42,14 +43,15 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     OrderComponent,
     CartComponent,
     SearchResultsComponent,
- 
+    PriceFilterComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule, // За ngModel
     RouterModule,
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), 
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()), // Добави Storage
