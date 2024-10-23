@@ -1,7 +1,7 @@
 export interface Order {
   userId: string;
-  items: any[]; // Списък с игри
-  total: number; // Общата сума на поръчката
+  items: any[];
+  total: number; 
   street: string;
   phone: string;
   name: string;
