@@ -1,16 +1,14 @@
-/* Контейнерът за логин формата */
+
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #0d0d0d;
-    /* Тъмен фон за gaming атмосфера */
 }
 
 .login-box {
     background-color: #1b1b1b;
-    /* Тъмен фон за логин кутията */
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
@@ -30,7 +28,6 @@ h2 {
 
 label {
     color: #ffffff;
-    /* Бял текст за лейбълите */
     display: block;
     margin-bottom: 8px;
 }
@@ -48,12 +45,10 @@ input {
 
 input::placeholder {
     color: #777;
-    /* По-светъл сив за placeholder текста */
 }
 
 .login-button {
     background-color: #39ff14;
-    /* Неоново зелено за бутона */
     color: #0d0d0d;
     border: none;
     border-radius: 5px;
@@ -66,19 +61,16 @@ input::placeholder {
 
 .login-button:hover {
     background-color: #32e314;
-    /* Леко по-тъмен зелен за hover */
 }
 
 .register-link {
     color: #ccc;
-    /* Светлосив текст за линка */
     margin-top: 20px;
     font-size: 14px;
 }
 
 .register-link a {
     color: #39ff14;
-    /* Линкът е неоново зелен */
     text-decoration: none;
 }
 
@@ -88,29 +80,19 @@ input::placeholder {
 
 .video-background {
     position: absolute;
-    /* Позволява видеото да се позиционира относително на родителския контейнер */
     top: 0;
     left: 0;
     width: 100%;
-    /* Покрива целия контейнер */
     height: 100%;
-    /* Покрива целия контейнер */
     object-fit: cover;
-    /* Запазва пропорциите на видеото и покрива контейнера */
     z-index: 1;
-    /* Задава z-index, така че видеото да е зад съдържанието */
 }
 
 .login-box {
     position: relative;
-    /* Позволява на формата да се позиционира над видеото */
     z-index: 2;
-    /* Задава z-index, за да бъде формата над видеото */
     background: rgb(255 255 255 / 15%);;
-    /* Бел фон с прозрачност за видимост */
     padding: 20px;
-    /* Добавя отстъп около формата */
     border-radius: 10px;
-    /* Закръглени ъгли на формата */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
