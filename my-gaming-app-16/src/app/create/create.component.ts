@@ -1,9 +1,9 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { collection, addDoc, doc } from 'firebase/firestore'; // Добавено е `doc` за работа с документите
-import { Router } from '@angular/router'; // За навигиране към детайлите
+import { collection, addDoc, doc } from 'firebase/firestore'; 
+import { Router } from '@angular/router'; 
 import { Auth } from '@angular/fire/auth'
-import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage'; // Импортиране на Firebase Storage
+import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage'; 
 
 
 @Component({
@@ -12,7 +12,7 @@ import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements AfterViewInit {
-  @ViewChild('videoBackground') videoElement!: ElementRef; // Декоратор за достъп до видеото
+  @ViewChild('videoBackground') videoElement!: ElementRef;
 
 
 
@@ -20,13 +20,13 @@ export class CreateComponent implements AfterViewInit {
   description: string = '';
   price: number = 0;
   category: string = '';
-  imageFile: File | null = null; // Променлива за съхранение на изображението
+  imageFile: File | null = null; 
   imagePreview: string | null = null;
 
   constructor(private firestore: Firestore, private router: Router, private storage: Storage, private auth: Auth) { }
 
   ngAfterViewInit() {
-    this.playVideo(); // Стартиране на видеото при инициализация на компонента
+    this.playVideo(); 
   }
   playVideo() {
     const video: HTMLVideoElement = this.videoElement.nativeElement;
@@ -42,13 +42,13 @@ export class CreateComponent implements AfterViewInit {
   onFileSelected(event: Event) {
     const target = event.target as HTMLInputElement;
     if (target.files && target.files.length > 0) {
-      this.imageFile = target.files[0]; // Запазваме избраното изображение
+      this.imageFile = target.files[0]; 
 
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.imagePreview = e.target.result
       };
-      reader.readAsDataURL(this.imageFile); // Четем файла като Data URL
+      reader.readAsDataURL(this.imageFile); 
 
     }
   }
@@ -80,28 +80,25 @@ export class CreateComponent implements AfterViewInit {
 
 
     try {
-      // Качване на изображението в Firebase Storage
-      const storagePath = `images/${this.imageFile.name}`; // Път за съхранение
-      const storageRef = ref(this.storage, storagePath);
-      await uploadBytes(storageRef, this.imageFile); // Качваме файла
 
-      // Получаване на URL на каченото изображение
+      const storagePath = `images/${this.imageFile.name}`; 
+      const storageRef = ref(this.storage, storagePath);
+      await uploadBytes(storageRef, this.imageFile); 
+
+      
       const imageUrl = await getDownloadURL(storageRef);
-      gameData.imageUrl = imageUrl; // Записваме URL адреса в данните за играта
+      gameData.imageUrl = imageUrl; 
 
       const gamesCollection = collection(this.firestore, 'games');
 
-      // Добавяме играта в Firebase и получаваме ID на новия документ
+   
       const docRef = await addDoc(gamesCollection, gameData);
-      console.log('Game added with ID: ', docRef.id);  // Тук получаваш ID на играта
+      console.log('Game added with ID: ', docRef.id); 
 
-      // Навигиране към страницата с детайли за играта след успешно създаване
       this.router.navigate(['/']);
     } catch (error) {
       console.error('Error adding game: ', error);
     }
   }
-
-
 }
 
