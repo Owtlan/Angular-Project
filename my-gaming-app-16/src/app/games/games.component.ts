@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FirebaseService } from '../firebase.service'; // Услуга за Firebase
+import { FirebaseService } from '../firebase.service';
 import { Observable } from 'rxjs';
-import { Game } from '../model/game.model'; // Модел за игра (опционално)
+import { Game } from '../model/game.model'; 
 import { Firestore, doc, getDocs, collection, query, where, limit } from '@angular/fire/firestore';
 
-import { CartService } from '../service/cart.service';  // Услуга за количката
+import { CartService } from '../service/cart.service'; 
 import { Auth, user } from '@angular/fire/auth';
 
 
@@ -24,27 +24,25 @@ export class GamesComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private firebaseService: FirebaseService,
-    private cartService: CartService,  // Вземи услугата за количката
-    private auth: Auth                 // Firebase Auth за проверка дали е логнат
+    private cartService: CartService,  
+    private auth: Auth                
   ) { }
 
   ngOnInit(): void {
-    // Взимаме категорията от URL параметрите
     this.route.paramMap.subscribe(params => {
       this.category = params.get('category');
 
       if (this.category) {
-        // Правим заявка към Firebase за извличане на игри според категорията
         this.games$ = this.firebaseService.getGamesByCategory(this.category);
       }
     });
 
-    // Проверяваме дали потребителят е логнат
+
     user(this.auth).subscribe(user => {
       if (user) {
         this.isLoggedIn = true;
         this.currentUserId = user.uid;
-        this.loadPurchasedGames(); // Зареждане на поръчаните игри
+        this.loadPurchasedGames(); 
       } else {
         this.isLoggedIn = false;
         this.currentUserId = null;
@@ -55,7 +53,7 @@ export class GamesComponent implements OnInit {
   addToCart(game: any) {
     if (this.currentUserId) {
       this.cartService.addToCart(game, this.currentUserId);
-      this.cartService.updateCartItemCount(this.currentUserId);  // Ъпдейтваме брояча на количката
+      this.cartService.updateCartItemCount(this.currentUserId); 
       alert(`${game.title} беше добавена в количката.`);
     } else {
       alert('Трябва да сте логнат, за да добавите игра в количката.');
