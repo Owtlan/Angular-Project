@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 import { Game } from '../model/game.model';
 import { Observable } from 'rxjs';
-import { CartService } from '../service/cart.service'; // Услуга за количката
+import { CartService } from '../service/cart.service'; 
 import { Auth, user } from '@angular/fire/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 
@@ -33,7 +33,7 @@ export class SearchResultsComponent implements OnInit {
       if (user) {
         this.isLoggedIn = true;
         this.currentUserId = user.uid;
-        this.loadPurchasedGames(); // Зареждане на поръчаните игри
+        this.loadPurchasedGames(); 
       } else {
         this.isLoggedIn = false;
         this.currentUserId = null;
@@ -44,7 +44,7 @@ export class SearchResultsComponent implements OnInit {
   addToCart(game: Game) {
     if (this.currentUserId) {
       this.cartService.addToCart(game, this.currentUserId);
-      this.cartService.updateCartItemCount(this.currentUserId); // Ъпдейтваме брояча на количката
+      this.cartService.updateCartItemCount(this.currentUserId); 
       alert(`${game.title} беше добавена в количката.`);
     } else {
       alert('Трябва да сте логнат, за да добавите игра в количката.');
