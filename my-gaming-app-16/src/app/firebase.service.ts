@@ -12,6 +12,12 @@ export class FirebaseService {
   //   throw new Error('Method not implemented.');
   // }
   constructor(public firestore: Firestore) { }
+
+getGames(): Observable<Game[]> {
+  const gamesCollection = collection(this.firestore, 'games');
+  return collectionData(gamesCollection, { idField: 'id' }) as Observable<Game[]>;
+}
+
   searchGamesByName(name: string): Observable<Game[]> {
     // Създаване на референция към колекцията 'games'
     const gamesCollection = collection(this.firestore, 'games');
