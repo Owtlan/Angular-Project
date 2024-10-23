@@ -1,0 +1,24 @@
+<div class="filter-container">
+    <h2>Filter by Price</h2>
+  
+    <div class="price-slider">
+      <label for="minPrice">Min Price: {{ minPrice }} $</label>
+      <input type="range" id="minPrice" [(ngModel)]="minPrice" [min]="0" [max]="maxPriceLimit" (change)="filteredGamesByPrice()" />
+  
+      <label for="maxPrice">Max Price: {{ maxPrice }} $</label>
+      <input type="range" id="maxPrice" [(ngModel)]="maxPrice" [min]="minPrice" [max]="maxPriceLimit" (change)="filteredGamesByPrice()" />
+    </div>
+  
+    <div *ngIf="filteredGames.length === 0">
+      <p>No games found in this price range.</p>
+    </div>
+  
+    <div class="games-list" *ngIf="filteredGames.length > 0">
+      <div *ngFor="let game of filteredGames">
+        <h3>{{ game.title }}</h3>
+        <p>{{ game.description }}</p>
+        <p>Price: ${{ game.price }}</p>
+      </div>
+    </div>
+  </div>
+  

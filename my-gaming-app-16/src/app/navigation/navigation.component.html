@@ -7,10 +7,10 @@
             <div class="magnifying-glass">
                 <i class="fa-brands fa-searchengin" (click)="toggleSearch()"></i>
                 <div [ngClass]="{'search-bar': true, 'show': isSearchVisible}">
-                  <input type="text" placeholder="Search games..." [(ngModel)]="searchQuery" />
-                  <button (click)="searchGames()">Search</button> <!-- Добавете функцията за търсене -->
+                    <input type="text" placeholder="Search games..." [(ngModel)]="searchQuery" />
+                    <button (click)="searchGames()">Search</button> <!-- Добавете функцията за търсене -->
                 </div>
-              </div>
+            </div>
             <!-- Search input, visible when isSearchVisible is true -->
         </div>
 
@@ -39,6 +39,9 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span *ngIf="cartItemCount > 0" class="cart-count">{{ cartItemCount }}</span>
                 </a>
+            </li>
+            <li>
+                <a routerLink="/filter">filter</a>
             </li>
         </ul>
     </div>
