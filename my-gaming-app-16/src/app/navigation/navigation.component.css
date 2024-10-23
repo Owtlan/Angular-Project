@@ -1,18 +1,11 @@
-/* .navbar {
-  position: relative;
-  
-} */
 
 .container {
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: relative;
-  /* width: 100%; */
-  /* z-index: 999; */
   background: #17215a;
   padding: 10px;
-  /* background: red; */
   z-index: 999;
   position: relative;
 
@@ -21,7 +14,6 @@
 .logo {
   font-size: 24px;
   font-weight: bold;
-
   text-decoration: none;
 }
 
@@ -116,18 +108,14 @@
 .magnifying-glass i:hover {
   color: #a189ff;
   ;
-  /* Лупата ще стане червена при задържане */
 }
 
 
 /* Search bar styling */
 .search-bar {
   opacity: 0;
-  /* Скрито по подразбиране */
   max-height: 0;
-  /* Няма височина по подразбиране */
   overflow: hidden;
-  /* Скрива излишното съдържание */
   transition: opacity 0.5s ease, max-height 0.5s ease;
   position: absolute;
   left: 40px;
@@ -137,11 +125,8 @@
 
 .search-bar.show {
   opacity: 1;
-  /* Показано */
   max-height: 100px;
-  /* Можеш да настроиш подходяща височина */
   overflow: visible;
-  /* Позволява видимост на съдържанието */
   display: flex;
   flex-direction: column;
 

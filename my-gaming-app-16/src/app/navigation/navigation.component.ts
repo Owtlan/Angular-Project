@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Auth, onAuthStateChanged, User } from '@angular/fire/auth';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CartService } from '../service/cart.service';
-import { FirebaseService } from '../firebase.service'; // Импортирайте вашия FirebaseService
-import { Router } from '@angular/router'; // Импортирайте Router
+import { FirebaseService } from '../firebase.service'; 
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -39,7 +39,7 @@ export class NavigationComponent {
       if (user) {
         this.isLoggedIn = true;
         this.currentUserId = user.uid;
-        this.updateCartItemCount(); // Обнови броя на продуктите в количката
+        this.updateCartItemCount(); 
       } else {
         this.isLoggedIn = false;
         this.currentUserId = null;
@@ -48,12 +48,12 @@ export class NavigationComponent {
     });
 
     this.cartService.cartItemCount$.subscribe(count => {
-      this.cartItemCount = count; // Актуализирайте cartItemCount
+      this.cartItemCount = count;
     });
 
-    // Слушайте за изчистване на количката
+
     this.cartService.cartCleared$.subscribe(() => {
-      this.cartItemCount = 0; // Занулява брояча при изчистване
+      this.cartItemCount = 0; 
       console.log('Cart cleared, item count set to 0');
     });
   }
@@ -75,11 +75,10 @@ export class NavigationComponent {
 
   searchGames() {
     if (this.searchQuery.trim()) {
-      // Преминете към страницата с резултатите от търсенето
       this.router.navigate(['/search'], { queryParams: { query: this.searchQuery } });
 
       this.isSearchVisible = false;
-      this.searchQuery = ''; // Изчистете текста
+      this.searchQuery = ''; 
     }
   }
 }
