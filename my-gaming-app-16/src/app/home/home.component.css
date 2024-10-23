@@ -1,5 +1,3 @@
-
-/* Стил за хедъра (hero section) */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -10,7 +8,6 @@
     color: white;
     text-align: center;
     overflow: hidden;
-    /* background: url('/my-gaming-app-16/') no-repeat center center/cover; */
 }
 
 .overlay {
@@ -20,7 +17,6 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    /* Полупрозрачност за подобряване на четимостта */
     z-index: 0;
 }
 
@@ -28,7 +24,6 @@
     z-index: 1;
     font-size: 48px;
     color: whitesmoke;
-    /* Неоново зелено */
     margin-bottom: 10px;
     -webkit-text-stroke: 1px black;
 }
@@ -48,15 +43,13 @@
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s;
-    z-index: 1
+    z-index: 1;
 }
 
 .cta-button:hover {
     background-color: #0056b3;
-    /* Леко по-тъмен зелен за hover */
 }
 
-/* Стил за секцията с избрани игри */
 .featured-games {
     margin-top: 40px;
     max-width: 800px;
@@ -76,94 +69,63 @@
     max-width: 800px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    /* Използваме CSS grid */
     gap: 8px 20px;
     padding: 20px;
     padding-top: 40px;
     border: 1px solid rgba(0, 0, 0, 0.233);
     background: #232a31a8;
     border-radius: 5px;
-    
 }
 
 .game-image {
     width: 25px;
     height: 25px;
     margin-right: 10px;
-    /* Разстояние между изображението и текста */
 }
 
 .game-details {
     flex-grow: 1;
     text-align: initial;
-    
-    /* За да заеме останалото място */
 }
 
 .details-button {
-    background-color: #007bff; /* Син фон */
-    color: white; /* Цвят на текста */
-    border: none; /* Без рамка */
-    border-radius: 5px; /* Закръглени ъгли */
-    padding: 5px 15px; /* Вътрешно разстояние */
-    font-size: 12px; /* Размер на шрифта */
-    font-weight: bold; /* Удебелен текст */
-    cursor: pointer; /* Курсор при задържане */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Преходи за ефекти */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Лека сянка */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-decoration: none;
 }
 
 .details-button:hover {
-    background-color: #0056b3; /* По-тъмен цвят при задържане */
-    transform: scale(1.05); /* Леко увеличаване */
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 .details-button:active {
-    transform: scale(0.95); /* Намаляване при клик */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Промяна на сянката при клик */
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .game-card {
     background: #77889961;
     border: 1px solid #ffffff7a;
-    /* Прозрачен фон на картата */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    /* За да не излизат елементите извън границите */
     display: flex;
-    /* За разположение на изображението и текста */
     align-items: center;
-    /* Вертикално центрирано подравняване */
     padding: 10px;
 }
-.game-card:hover{
+
+.game-card:hover {
     background-color: rgba(0, 0, 0, 0.363);
     transition: ease-in 0.3s;
-    cursor: pointer;
-}
-/* .hero-section .vid-wallpaper{
-   position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    left: 0;
-    top: 0;
-} */
-
-.video-background {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    /* Прави видеото да покрива целия фон */
-    transform: translate(-50%, -50%);
-    /* Центриране по хоризонтала и вертикала */
-    z-index: -1;
-    /* Това гарантира, че видеото ще бъде на заден план */
 }
 
 .video-background {
@@ -173,39 +135,35 @@
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    /* Прави видеото да покрива целия фон */
     transform: translate(-50%, -50%);
-    /* Центриране по хоризонтала и вертикала */
     z-index: -1;
-    /* Това гарантира, че видеото ще бъде на заден план */
 }
-.button-section{
+
+.button-section {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    
 }
 
 .add-to-cart-button {
-    background-color: #ff4081; /* Ярък фон */
-    color: white; /* Цвят на текста */
-    border: none; /* Без рамка */
-    border-radius: 5px; /* Закръглени ъгли */
-    padding: 5px 15px; /* Вътрешно разстояние */
-    font-size: 12px; /* Размер на шрифта */
-    font-weight: bold; /* Удебелен текст */
-    cursor: pointer; /* Курсор при задържане */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Преходи за ефекти */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Лека сянка */
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .add-to-cart-button:hover {
-    background-color: #ff79b0; /* Променяме цвета при задържане */
-    transform: scale(1.05); /* Леко увеличаване */
+    background-color: #ff79b0;
+    transform: scale(1.05);
 }
 
 .add-to-cart-button:active {
-    transform: scale(0.95); /* Малко намаляване при клик */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Промяна на сянката при клик */
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-/* Стил за секцията с последни новини */

@@ -1,12 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Firestore, doc, getDocs, collection, query, where, limit } from '@angular/fire/firestore';
 
-// import { collection, getDocs, limit, query } from 'firebase/firestore';
-import { Router } from '@angular/router'; // Импорт на Router
-import { Auth, user } from '@angular/fire/auth'; // Импорт на Firebase Auth
-// import { addDoc } from 'firebase/firestore'; // За взимане на документ за игра
-
-//new
+import { Router } from '@angular/router';
+import { Auth, user } from '@angular/fire/auth'; 
 import { CartService } from '../service/cart.service';
 import { orderBy } from 'firebase/firestore';
 
@@ -21,9 +17,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('videoBackground') videoElement!: ElementRef;
 
   games: any[] = [];
-  currentUserId: string | null = null;  // ID на текущия потребител
-  purchasedGames: string[] = [];        // Списък с ID на вече закупени игри
-  isLoggedIn: boolean = false;          // Състояние на логин
+  currentUserId: string | null = null; 
+  purchasedGames: string[] = [];       
+  isLoggedIn: boolean = false;          
 
   //new
   constructor(private firestore: Firestore, private router: Router, private auth: Auth, private cartService: CartService) { }
@@ -34,7 +30,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       if (user) {
         this.isLoggedIn = true;
         this.currentUserId = user.uid;
-        this.loadPurchasedGames(); // Зареждане на поръчаните игри
+        this.loadPurchasedGames(); 
       } else {
         this.isLoggedIn = false;
         this.currentUserId = null;
@@ -45,11 +41,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     await this.fetchGames();
   }
 
-  //new
   addToCart(game: any) {
     if (this.currentUserId) {
       this.cartService.addToCart(game, this.currentUserId);
-      this.cartService.updateCartItemCount(this.currentUserId); // Добавете тази линия
+      this.cartService.updateCartItemCount(this.currentUserId); 
       alert(`${game.title} беше добавена в кошницата.`);
 
 
@@ -89,23 +84,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if (video) {
       video.muted = true;
 
-      // video.playbackRate = 1;
-
       video.play().catch(error => {
         console.error('Error playing video:', error);
       });
     }
   }
 
-  // async buyGame(gameId: string) {
-  //   if (!this.isLoggedIn) {
-  //     // Ако не е логнат, го пренасочваме към страницата за логин
-  //     this.router.navigate(['/login']);
-  //     return;
-  //   }
-
-  //   this.router.navigate(['/order'], { queryParams: { gameId: gameId } });
-  // }
 
 
   isGamePurchased(gameId: string): boolean {
