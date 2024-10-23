@@ -27,16 +27,12 @@ body {
     text-align: center;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.8);
-    /* Прозрачен фон за контейнера */
     border-radius: 8px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
     position: relative;
-    /* Позволява позициониране на дъното и на формата */
     height: 100vh;
-    /* Задава височина на контейнера */
     overflow: hidden;
     z-index: 2;
-    /* Изтласква контейнера над фона */
 }
 .create-container h1{
     color: antiquewhite;
@@ -44,40 +40,23 @@ body {
 }
 .video-background {
     position: absolute;
-    /* Позволява видеото да се позиционира относително на родителския контейнер */
     top: 0;
     left: 0;
     width: 100%;
-    /* Покрива целия контейнер */
     height: 100%;
-    /* Покрива целия контейнер */
     object-fit: cover;
-    /* Запазва пропорциите на видеото и покрива контейнера */
     z-index: -999;
-    /* Задава z-index, така че видеото да е зад съдържанието */
 }
 
 .create-box {
     position: relative;
-    /* Позволява на формата да се позиционира над видеото */
     z-index: 2;
-    /* Задава z-index, за да бъде формата над видеото */
     background: rgba(255, 255, 255, 0.8);
-    /* Бел фон с прозрачност за видимост */
     padding: 20px;
-    /* Добавя отстъп около формата */
     border-radius: 10px;
-    /* Закръглени ъгли на формата */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    /* Сянка на формата */
 }
 
-/* .create-container h1 {
-    text-align: center;
-    color: #333;
-    font-size: 2rem;
-    margin-bottom: 20px;
-} */
 .create-container form {
     max-width: 400px;
     margin: 0 auto;
@@ -138,14 +117,6 @@ textarea {
     background-color: #0056b3;
 }
 
-/* .create-container {
-    
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-} */
 
 .form-group {
     margin-bottom: 15px;

@@ -17,7 +17,7 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService, private router: Router, private auth: Auth) { }
 
   ngOnInit(): void {
-    this.userId = this.auth.currentUser?.uid || null; // Вземаме текущия потребител
+    this.userId = this.auth.currentUser?.uid || null; 
     if (this.userId) {
       this.cartItems = this.cartService.getCartItems(this.userId);
       this.totalPrice = this.cartService.getTotalPrice(this.userId);
@@ -40,7 +40,7 @@ export class CartComponent implements OnInit {
     if (this.userId) {
       this.cartService.removeFromCart(index, this.userId)
       this.cartItems = this.cartService.getCartItems(this.userId)
-      this.totalPrice = this.cartService.getTotalPrice(this.userId); // Обновяваме цената
+      this.totalPrice = this.cartService.getTotalPrice(this.userId); 
 
     }
   }

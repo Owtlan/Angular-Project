@@ -1,7 +1,7 @@
 <div class="cart-container">
   <h2>Your Cart</h2>
   <div *ngIf="cartItems.length > 0; else emptyCart">
-    <div *ngFor="let game of cartItems let i" class="cart-item">
+    <div *ngFor="let game of cartItems; let i = index" class="cart-item">
       <img [src]="game.imageUrl" alt="{{ game.title }}" />
       <p>{{ game.title }}</p>
       <p>${{ game.price }}</p>
