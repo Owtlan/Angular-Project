@@ -1,33 +1,90 @@
+/* Основен контейнер за филтъра */
 .filter-container {
-  margin: 20px;
+  max-width: 600px; /* Максимална ширина */
+  margin: 20px auto; /* Центриране на контейнера */
+  padding: 20px; /* Вътрешно разстояние */
+  background-color: #f9f9f9; /* Светъл фон */
+  border-radius: 8px; /* Закръглени ъгли */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Сенки за 3D ефект */
 }
 
+/* Заглавие на филтъра */
+.filter-container h2 {
+  font-size: 24px; /* Размер на шрифта */
+  color: #333; /* Цвят на текста */
+  margin-bottom: 20px; /* Разстояние под заглавието */
+  text-align: center; /* Центриране на заглавието */
+}
+
+/* Стил за лентата за цените */
 .price-slider {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Разстояние под слайдера */
 }
 
-.price-range-labels {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+/* Стил за лейблите на цените */
+.price-slider label {
+  display: block; /* Превръща лейблите в блокови елементи */
+  margin-bottom: 8px; /* Разстояние под лейблите */
+  font-weight: bold; /* Удебелен текст */
+  color: #555; /* Тъмен цвят за текста */
 }
 
+/* Стил за входните полета за диапазона на цените */
+input[type="range"] {
+  -webkit-appearance: none; /* Премахва стандартния стил на слайдера в WebKit браузери */
+  appearance: none; /* Премахва стандартния стил на слайдера */
+  width: 100%; /* Ширина на слайдера */
+  height: 8px; /* Височина на слайдера */
+  background: #ddd; /* Светлосив фон за слайдера */
+  border-radius: 5px; /* Закръглени ъгли на слайдера */
+  outline: none; /* Премахва контурите */
+}
+
+/* Стил за плъзгача */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Премахва стандартния стил на плъзгача */
+  appearance: none; /* Премахва стандартния стил на плъзгача */
+  width: 20px; /* Ширина на плъзгача */
+  height: 20px; /* Височина на плъзгача */
+  border-radius: 50%; /* Закръглена форма */
+  background: #4CAF50; /* Цвят на плъзгача */
+  cursor: pointer; /* Курсор ръка при задържане */
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px; /* Ширина на плъзгача */
+  height: 20px; /* Височина на плъзгача */
+  border-radius: 50%; /* Закръглена форма */
+  background: #4CAF50; /* Цвят на плъзгача */
+  cursor: pointer; /* Курсор ръка при задържане */
+}
+
+/* Стил за съобщението, когато няма намерени игри */
+.games-list p {
+  text-align: center; /* Центрира текста */
+  font-size: 18px; /* Размер на шрифта */
+  color: #777; /* Светъл цвят на текста */
+}
+
+/* Стил за списъка с игри */
 .games-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid; /* Използва се CSS Grid за подредба */
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Автоматично запълване на колони */
+  gap: 20px; /* Разстояние между елементите */
 }
 
+/* Стил за индивидуалните игри */
 .games-list div {
-  margin-right: 15px;
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f8f8f8;
+  background: #fff; /* Бял фон за всяка игра */
+  border-radius: 8px; /* Закръглени ъгли */
+  padding: 10px; /* Вътрешно разстояние */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Сенки за 3D ефект */
+  text-align: center; /* Центрира текста */
 }
 
-.price-slider .noUi-base {
-  display: flex;
-  justify-content: center;
-  background-color: red;
+/* Стил за изображението на играта */
+.games-list img {
+  max-width: 100%; /* Ширината на изображението не надвишава контейнера */
+  height: auto; /* Автоматична височина */
+  border-radius: 8px; /* Закръглени ъгли за изображението */
 }
