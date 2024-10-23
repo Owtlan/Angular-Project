@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../service/cart.service';
 import { FirebaseService } from '../firebase.service';
-import { Order } from '../model/order.model'; // Импорт на интерфейса
+import { Order } from '../model/order.model';
 import { Auth } from '@angular/fire/auth';
 
 @Component({
@@ -30,11 +30,11 @@ export class OrderComponent implements OnInit {
     this.userId = this.auth.currentUser?.uid;
 
     if (this.userId) {
-      this.cartItems = this.cartService.getCartItems(this.userId); // Предай userId
-      this.totalPrice = this.cartService.getTotalPrice(this.userId); // Предай userId
+      this.cartItems = this.cartService.getCartItems(this.userId);
+      this.totalPrice = this.cartService.getTotalPrice(this.userId);
     } else {
       alert('Трябва да сте логнат, за да направите поръчка.');
-      this.router.navigate(['/login']); // Пренасочване към логин страница, ако не е логнат
+      this.router.navigate(['/login']);
     }
   }
 
@@ -43,12 +43,12 @@ export class OrderComponent implements OnInit {
 
     if (!userId) {
       alert('Трябва да сте логнат, за да направите поръчка.');
-      this.router.navigate(['/login']); // Пренасочване към логин страница, ако не е логнат
+      this.router.navigate(['/login']);
       return;
     }
 
     const order: Order = {
-      userId: userId, // Използваме директно userId, който е string
+      userId: userId,
       items: this.cartItems,
       total: this.totalPrice,
       street: this.street,
@@ -60,8 +60,8 @@ export class OrderComponent implements OnInit {
 
     this.firebaseService.createOrder(order).then(() => {
       alert('Вашата поръчка e успешна!');
-      this.cartService.clearCart(userId); // Изчистване на количката с userId
-      this.router.navigate(['/']); // Пренасочване след успешна поръчка
+      this.cartService.clearCart(userId);
+      this.router.navigate(['/']);
     });
   }
 }
