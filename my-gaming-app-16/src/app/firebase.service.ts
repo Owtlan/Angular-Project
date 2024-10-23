@@ -31,14 +31,14 @@ getGames(): Observable<Game[]> {
     // Връщане на Observable с игрите, които отговарят на заявката
     return collectionData(q, { idField: 'id' }) as Observable<Game[]>;
   }
-  // Връщаме Observable за игрите с конкретната категория
+
   getGamesByCategory(category: string): Observable<Game[]> {
     const gamesCollection = collection(this.firestore, 'games');
     const q = query(gamesCollection, where('category', '==', category));
     return collectionData(q, { idField: 'id' }) as Observable<Game[]>;
   }
 
-  // Връщаме Observable за играта по ID
+
   getGameById(id: string): Observable<Game> {
     const gameDoc = doc(this.firestore, `games/${id}`);
     return docData(gameDoc, { idField: 'id' }) as Observable<Game>;
