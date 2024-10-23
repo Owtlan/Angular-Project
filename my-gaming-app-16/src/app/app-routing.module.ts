@@ -11,6 +11,7 @@ import { EditGameComponent } from './edit-game/edit-game.component';
 import { OrderComponent } from './order/order.component';
 import { CartComponent } from './cart/cart.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { PriceFilterComponent } from './price-filter/price-filter.component'; // Импортирайте вашия компонент
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'order', component: OrderComponent },
   { path: 'cart', component: CartComponent },
   { path: 'search', component: SearchResultsComponent },
+  { path: 'filter', component: PriceFilterComponent }, // Добавете маршрута
   { path: '', redirectTo: '/', pathMatch: 'full' }
 
 ];
