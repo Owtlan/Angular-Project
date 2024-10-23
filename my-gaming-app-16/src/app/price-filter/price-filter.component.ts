@@ -68,12 +68,11 @@ export class PriceFilterComponent implements OnInit {
 
 
   isGameCreatedByUser(game: Game): boolean {
-    return this.currentUserId === game.creatorId; // Проверка дали играта е създадена от текущия потребител
+    return this.currentUserId === game.creatorId; 
   }
 
   addToCart(game: Game): void {
     if (this.currentUserId) {
-      // Добави логиката за добавяне на играта в количката тук
       this.cartService.addToCart(game, this.currentUserId);
       this.cartService.updateCartItemCount(this.currentUserId); 
       console.log(`Added to cart: ${game.title}`);

@@ -1,34 +1,42 @@
 <div class="filter-container">
     <h2>Filter by Price</h2>
-  
-    <div class="price-slider">
-      <label for="minPrice">Min Price: {{ minPrice }} $</label>
-      <input type="range" id="minPrice" [(ngModel)]="minPrice" [min]="0" [max]="maxPriceLimit" (change)="filteredGamesByPrice()" />
-  
-      <label for="maxPrice">Max Price: {{ maxPrice }} $</label>
-      <input type="range" id="maxPrice" [(ngModel)]="maxPrice" [min]="minPrice" [max]="maxPriceLimit" (change)="filteredGamesByPrice()" />
-    </div>
-  
-    <div *ngIf="filteredGames.length === 0">
-      <p>No games found in this price range.</p>
-    </div>
-  
-    <div class="games-list" *ngIf="filteredGames.length > 0">
-      <div *ngFor="let game of filteredGames">
-        <img [src]="game.imageUrl" alt="{{ game.title }}">
-        <h3>{{ game.title }}</h3>
-        <p>Price: ${{ game.price }}</p>
 
-        <div class="button-section">
-          <!-- Бутон за детайли -->
-          <a [routerLink]="['/games/details', game.id]" class="details-button">Details</a>
-      
-          <!-- Бутон за добавяне в количката -->
-          <button *ngIf="isLoggedIn && !isGameCreatedByUser(game) && !isGamePurchased(game.id ?? '')"
-                  (click)="addToCart(game)" class="add-to-cart-button">
-            Add to Cart
-          </button>
+    <div class="price-slider">
+        <label for="minPrice">Min Price: {{ minPrice }} $</label>
+        <input type="range" id="minPrice" [(ngModel)]="minPrice" [min]="0" [max]="maxPriceLimit"
+            (change)="filteredGamesByPrice()" />
+
+        <label for="maxPrice">Max Price: {{ maxPrice }} $</label>
+        <input type="range" id="maxPrice" [(ngModel)]="maxPrice" [min]="minPrice" [max]="maxPriceLimit"
+            (change)="filteredGamesByPrice()" />
+    </div>
+
+    <div *ngIf="filteredGames.length === 0">
+        <p>No games found in this price range.</p>
+    </div>
+
+    <div class="games-list" *ngIf="filteredGames.length > 0">
+        <div *ngFor="let game of filteredGames">
+            <img [src]="game.imageUrl" alt="{{ game.title }}">
+            <h3>{{ game.title }}</h3>
+            <p>Price: ${{ game.price }}</p>
+
+            <div class="button-section">
+
+                <button *ngIf="isLoggedIn && !isGameCreatedByUser(game) && !isGamePurchased(game.id ?? '')"
+                    (click)="addToCart(game)" class="add-to-cart-button">
+                    <span>
+                        Buy
+                    </span>
+                </button>
+
+                <a [routerLink]="['/games/details', game.id]" class="details-button">
+                    <span>
+                        Details
+                    </span>
+                </a>
+            </div>
+
         </div>
-      </div>
     </div>
 </div>
