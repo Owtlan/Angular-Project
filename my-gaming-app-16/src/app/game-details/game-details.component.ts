@@ -65,8 +65,4 @@ export class GameDetailsComponent implements OnInit {
     }
   }
 
-  // buyGame() {
-  //   this.router.navigate(['/order'], { queryParams: { gameId: this.gameId } }); 
-  // }
-
 }

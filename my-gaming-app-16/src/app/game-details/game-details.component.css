@@ -1,82 +1,81 @@
 .game-details {
-    display: flex; /* Използваме flexbox за подредба на елементите */
-    flex-wrap: wrap; /* Позволява елементите да се подреждат на нови редове при нужда */
-    margin: 20px; /* Външно разстояние */
-    padding: 20px; /* Вътрешно разстояние */
-    background-color: #f8f9fa; /* Светъл фон */
-    border-radius: 10px; /* Закръглени ъгли */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Лека сянка за дълбочина */
+    display: flex; 
+    flex-wrap: wrap; 
+    margin: 20px;
+    padding: 20px; 
+    background-color: #f8f9fa; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
 .game-image {
-    max-width: 300px; /* Максимална ширина на изображението */
-    border-radius: 10px; /* Закръглени ъгли на изображението */
-    margin-right: 20px; /* Разстояние между изображението и текста */
+    max-width: 300px;
+    border-radius: 10px; 
+    margin-right: 20px; 
 }
 
 h1 {
-    font-size: 2rem; /* Размер на заглавието */
-    color: #343a40; /* Тъмен цвят на текста */
-    margin-bottom: 10px; /* Разстояние под заглавието */
+    font-size: 2rem; 
+    color: #343a40; 
+    margin-bottom: 10px; 
 }
 
 p {
-    font-size: 1.1rem; /* Размер на текста */
-    color: #495057; /* Тъмен сив цвят */
-    margin-bottom: 10px; /* Разстояние под параграфите */
+    font-size: 1.1rem; 
+    color: #495057; 
+    margin-bottom: 10px; 
 }
 
 strong {
-    color: #007bff; /* Цветът на текста за важна информация */
+    color: #007bff; 
 }
 
 button {
-    background-color: #007bff; /* Основен цвят на бутона */
-    color: white; /* Цвят на текста на бутона */
-    border: none; /* Без рамка */
-    border-radius: 5px; /* Закръглени ъгли на бутона */
-    padding: 10px 15px; /* Вътрешно разстояние на бутона */
-    font-size: 1rem; /* Размер на текста на бутона */
-    cursor: pointer; /* Курсор при задържане */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Преходи за ефекти */
-    margin-right: 10px; /* Разстояние между бутоните */
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 15px; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+    margin-right: 10px; 
 }
 
 button:hover {
-    background-color: #0056b3; /* По-тъмен цвят при задържане */
-    transform: scale(1.05); /* Леко увеличаване при задържане */
+    background-color: #0056b3; 
+    transform: scale(1.05); 
 }
 
 button:active {
-    transform: scale(0.95); /* Намаляване при клик */
+    transform: scale(0.95); 
 }
 
-/* Съобщение при не логнат потребител */
 .game-details p {
-    margin-top: 20px; /* Разстояние от останалия текст */
-    font-style: italic; /* Курсив за акцент */
-    color: #dc3545; /* Червен цвят за предупреждение */
+    margin-top: 20px; 
+    font-style: italic; 
+    color: #dc3545; 
 }
+
 .loader {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Височина на екрана */
+    height: 100vh; 
     text-align: center;
-  }
+}
   
-  .spinner {
-    border: 8px solid #f3f3f3; /* Light grey */
-    border-top: 8px solid #3498db; /* Blue */
+.spinner {
+    border: 8px solid #f3f3f3; 
+    border-top: 8px solid #3498db; 
     border-radius: 50%;
-    width: 60px; /* Размер на спинера */
-    height: 60px; /* Размер на спинера */
-    animation: spin 2s linear infinite; /* Анимация на спинера */
-  }
+    width: 60px; 
+    height: 60px; 
+    animation: spin 2s linear infinite; 
+}
   
-  @keyframes spin {
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
-  
+}
