@@ -1,0 +1,33 @@
+.filter-container {
+  margin: 20px;
+}
+
+.price-slider {
+  margin-bottom: 20px;
+}
+
+.price-range-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.games-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.games-list div {
+  margin-right: 15px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+}
+
+.price-slider .noUi-base {
+  display: flex;
+  justify-content: center;
+  background-color: red;
+}

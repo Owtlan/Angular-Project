@@ -13,7 +13,9 @@
   background: #17215a;
   padding: 10px;
   /* background: red; */
-  
+  z-index: 999;
+  position: relative;
+
 }
 
 .logo {
