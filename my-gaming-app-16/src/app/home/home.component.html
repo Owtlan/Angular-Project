@@ -1,4 +1,7 @@
 <div class="home-container animate__animated animate__fadeIn animate__delay-0.5s">
+
+
+
     <header class="hero-section">
         <div class="overlay"></div>
         <h1>Welcome to GameZone</h1>
@@ -9,8 +12,25 @@
                 type="video/mp4">
             Your browser does not support the video tag.
         </video>
+        <!-- btn filter by price-->
 
+        <div>
+            <a class="find-by-price" routerLink="/filter">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Filter by price!
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+            </a>
+
+        </div>
         <section class="featured-games">
+
+
+
+
+
             <div class="game-grid">
                 <h2>OUR GAMES</h2>
                 <div class="game-card" *ngFor="let game of games">
@@ -19,8 +39,7 @@
                         <h3>{{ game.title }}</h3>
                     </div>
                     <div class="button-section">
-                        <a [routerLink]="['/games/details', game.id]"
-                            class="details-button">Details</a>
+                        <a [routerLink]="['/games/details', game.id]" class="details-button">Details</a>
                         <!-- new -->
                         <button *ngIf="isLoggedIn && !isGameCreatedByUser(game) && !isGamePurchased(game.id)"
                             (click)="addToCart(game)" class="add-to-cart-button">
