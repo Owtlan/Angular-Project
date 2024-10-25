@@ -9,7 +9,6 @@
 /* Sidebar Styling */
 .section-slider {
   flex: 0 0 250px;
-  /* ширина на страничната лента */
   padding: 20px;
   background-color: #f4f4f4;
   border-radius: 8px;
@@ -75,7 +74,6 @@
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
   max-width: 760px;
-  /* 180px * 4 + 20px * 3 (за gap между колоните) */
   margin: 0 auto;
 }
 
@@ -167,6 +165,18 @@
 }
 
 .filter-game-section {
-  width: 800px;
+
   text-align: center;
+}
+
+.games-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+  gap: 20px;
+  justify-content: center;
+}
+.games-list > div {
+  max-width: 250px; 
+  width: 100%; 
+  margin: 0 auto; 
 }
