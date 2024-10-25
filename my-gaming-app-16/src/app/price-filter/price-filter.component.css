@@ -1,11 +1,65 @@
-.filter-container {
-  max-width: 600px;
-  margin: 20px auto;
+/* Container for Sidebar and Content */
+.filter-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
 
+/* Sidebar Styling */
+.section-slider {
+  flex: 0 0 250px;
+  /* ширина на страничната лента */
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
+  max-height: 200px;
+}
+
+.price-slider label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.price-slider input[type="range"] {
+  width: 100%;
+  margin: 10px 0 20px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+.price-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.price-slider input[type="range"]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+/* Main Content Styling */
+.filter-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .filter-container h2 {
@@ -13,66 +67,17 @@
   color: #333;
   margin-bottom: 20px;
   text-align: center;
-
 }
 
-
-.price-slider {
-  margin-bottom: 20px;
-}
-
-
-.price-slider label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #555;
-}
-
-
-input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 8px;
-  background: #ddd;
-  border-radius: 5px;
-  outline: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #4CAF50;
-  cursor: pointer;
-
-}
-
-input[type="range"]::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #4CAF50;
-  cursor: pointer;
-}
-
-
-.games-list p {
-  text-align: center;
-  font-size: 18px;
-  color: #777;
-}
-
-
+/* Dynamic Grid for Games List */
 .games-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
+  max-width: 760px;
+  /* 180px * 4 + 20px * 3 (за gap между колоните) */
+  margin: 0 auto;
 }
-
 
 .games-list div {
   background: #fff;
@@ -82,34 +87,53 @@ input[type="range"]::-moz-range-thumb {
   text-align: center;
 }
 
-
 .games-list img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-
 }
 
-.add-to-cart-button {
-  width: 100%;
-}
-
-.details-button,
-.add-to-cart-button {
-  display: block;
+.games-list h3 {
   font-size: 18px;
-  font-family: sans-serif;
-  text-decoration: none;
+  margin: 10px 0;
+  color: #333;
+}
+
+.games-list p {
+  color: #666;
+  font-size: 16px;
+}
+
+/* Button Styles */
+.button-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-to-cart-button,
+.details-button {
+  display: block;
+  padding: 8px;
+  font-size: 16px;
+  font-weight: bold;
   color: #333;
   border: 2px solid #333;
-  letter-spacing: 2px;
+  border-radius: 5px;
   text-align: center;
   position: relative;
-  transition: all .35s;
   overflow: hidden;
+  transition: all 0.35s;
+  background-color: #f9f9f9;
+  text-decoration: none
 }
 
+.add-to-cart-button:hover,
+.details-button:hover {
+  color: #fff;
+}
 
+.add-to-cart-button:after,
 .details-button:after {
   position: absolute;
   content: "";
@@ -117,47 +141,32 @@ input[type="range"]::-moz-range-thumb {
   left: 0;
   width: 0;
   height: 100%;
-  background: #1387eb;
-  transition: all .35s;
-  z-index: 0;
+  transition: all 0.35s;
 }
 
-.add-to-cart-button:after {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: #33ac69;
-  transition: all .35s;
-  z-index: 0;
-}
-
-
-.details-button:hover,
-.add-to-cart-button:hover {
-  color: #ffffff;
-
-}
-
-.details-button:hover:after,
 .add-to-cart-button:hover:after {
+  background: #33ac69;
   width: 100%;
 }
 
+.details-button:hover:after {
+  background: #1387eb;
+  width: 100%;
+}
+
+.add-to-cart-button span,
 .details-button span {
   position: relative;
   z-index: 1;
 }
 
-.add-to-cart-button span {
-  position: relative;
-  z-index: 1;
+.container-width {
+  display: flex;
+  width: 1000px;
+  gap: 40px;
 }
 
-.button-section {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.filter-game-section {
+  width: 800px;
+  text-align: center;
 }
