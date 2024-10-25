@@ -5,10 +5,10 @@
 
             <!-- Magnifying glass icon (Font Awesome) -->
             <div class="magnifying-glass">
-                <i class="fa-brands fa-searchengin" (click)="toggleSearch()"></i>
+                <i class="fa-solid fa-magnifying-glass" (click)="toggleSearch()"></i>
                 <div [ngClass]="{'search-bar': true, 'show': isSearchVisible}">
                     <input type="text" placeholder="Search games..." [(ngModel)]="searchQuery" />
-                    <button (click)="searchGames()">Search</button> <!-- Добавете функцията за търсене -->
+                    <button (click)="searchGames()">Search</button>
                 </div>
             </div>
             <!-- Search input, visible when isSearchVisible is true -->
