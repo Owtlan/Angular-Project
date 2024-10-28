@@ -5,18 +5,35 @@
     </video>
     <div class="login-box">
         <h2>Login to GameZone</h2>
-        <form (submit)="login()" class="login-form">
+        <form (submit)="login()" class="login-form" #loginForm="ngForm">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" [(ngModel)]="email" id="email" name="email" required
-                    placeholder="Enter your email" />
+                <input type="text" [(ngModel)]="email" id="email" name="email" required placeholder="Enter your email"
+                    #emailField="ngModel" />
+
+                <div *ngIf="emailField.invalid && emailField.touched" class="error-message">
+                    <small *ngIf="emailField.errors?.['required']">Email is required.</small>
+                    <small *ngIf="emailField.errors?.['email']">Enter a valid email.</small>
+                </div>
             </div>
+
+
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" [(ngModel)]="password" id="password" name="password" required
-                    placeholder="Enter your password" />
+                    placeholder="Enter your password" #passwordField="ngModel" />
+
+                <div *ngIf="passwordField.invalid && passwordField.touched" class="error-message">
+                    <small *ngIf="passwordField.errors?.['required']">Password is Required.</small>
+                </div>
+
             </div>
-            <button type="submit" class="login-button">Login</button>
+            <button type="submit" class="login-button" [disabled]="loginForm.invalid">Login</button>
+
+            <div *ngIf="errorMessage" class="error-message">
+                <small>{{ errorMessage }}</small>
+            </div>
+
         </form>
 
         <p class="register-link">
