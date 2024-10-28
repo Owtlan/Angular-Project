@@ -93,3 +93,6 @@ input::placeholder {
 .login-link a:hover {
     text-decoration: underline;
 }
+.error-message{
+    background-color: blue;
+}
