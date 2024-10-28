@@ -1,7 +1,7 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-
+import { FirebaseError } from 'firebase/app';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +14,10 @@ export class LoginComponent implements AfterViewInit {
 
   email: string = '';
   password: string = '';
+  errorMessage: string = '';
 
   constructor(private auth: Auth, private router: Router) { }
+
   ngAfterViewInit() {
     this.playVideo();
   }
@@ -33,6 +35,10 @@ export class LoginComponent implements AfterViewInit {
 
 
   login() {
+    this.errorMessage = '';
+    console.log('Attempting to log in with email:', this.email, 'and password:', this.password);
+    console.log('Password length:', this.password.length);
+
     signInWithEmailAndPassword(this.auth, this.email, this.password)
       .then((userCredential) => {
         const user = userCredential.user
@@ -41,9 +47,21 @@ export class LoginComponent implements AfterViewInit {
         this.router.navigate(['/']);
       })
       .catch((error) => {
-        console.log('Error logging in: ', error);
+        const firebaseError = error as FirebaseError;
+        console.log('Firebase error code:', firebaseError.code);
+        console.error('Error message:', firebaseError.message);
 
-      })
+        switch (firebaseError.code) {
+          case 'auth/invalid-login-credentials':
+            this.errorMessage = 'Invalid email or password. Please try again.';
+            break;
+          default:
+            this.errorMessage = 'An unexpected error occurred. Please try again.';
+            break;
+        }
+        console.error('Error logging in:', error);
+      });
+
   }
 
 
