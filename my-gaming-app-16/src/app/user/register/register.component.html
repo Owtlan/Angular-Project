@@ -2,33 +2,78 @@
   <video #videoBackground autoplay muted loop class="video-background">
     <source class="vid-wallpaper" src="../../../assets/login.mp4" type="video/mp4">
     Your browser does not support the video tag.
-</video>
+  </video>
   <div class="register-box animate__animated animate__fadeInDown">
-    
+
     <h2>Create Your GameZone Account</h2>
-    <form (ngSubmit)="register()">
+    <!-- username -->
+    <form (ngSubmit)="register()" #registerForm="ngForm">
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" id="username" name="username" [(ngModel)]="username" required
-          placeholder="Enter your username"
-          [ngClass]="{'animate__animated animate__pulse': animateUsername}"
-          (focus)="animateField('username')" (blur)="removeAnimation('username')" />
+        <input type="text" id="username" name="username" [(ngModel)]="username" required minlength="3"
+          #usernameField="ngModel" placeholder="Enter your username"
+          [ngClass]="{'animate__animated animate__pulse': animateUsername}" (focus)="animateField('username')"
+          (blur)="removeAnimation('username')" />
+
+        <div *ngIf="usernameField.invalid && usernameField.touched" class="error-message">
+          <small *ngIf="usernameField.errors?.['required']">Username is required.</small>
+          <small *ngIf="usernameField.errors?.['minlength']">Username must be at least 3 characters.</small>
+        </div>
       </div>
+
+      <!-- email -->
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" [(ngModel)]="email" required placeholder="Enter your email"
-          [ngClass]="{'animate__animated animate__pulse': animateEmail}"
+        <input type="email" id="email" name="email" [(ngModel)]="email" required email #emailField="ngModel"
+          placeholder="Enter your email" [ngClass]="{'animate__animated animate__pulse': animateEmail}"
           (focus)="animateField('email')" (blur)="removeAnimation('email')" />
+
+        <div *ngIf="emailField.invalid && emailField.touched" class="error-message">
+          <small *ngIf="emailField.errors?.['required']">Email is required.</small>
+
+          <small *ngIf="emailField.errors?.['email']">Enter a valid email</small>
+        </div>
+
       </div>
+
+
+      <!-- password -->
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" [(ngModel)]="password" required
-          placeholder="Enter your password"
-          [ngClass]="{'animate__animated animate__pulse': animatePassword}"
-          (focus)="animateField('password')" (blur)="removeAnimation('password')" />
+        <input type="password" id="password" name="password" [(ngModel)]="password" required minlength="6"
+          #passwordField="ngModel" placeholder="Enter your password"
+          [ngClass]="{'animate__animated animate__pulse': animatePassword}" (focus)="animateField('password')"
+          (blur)="removeAnimation('password')" />
+
+        <div *ngIf="passwordField.invalid && passwordField.touched" class="error-message">
+          <small *ngIf="passwordField.errors?.['required']">Password is required</small>
+          <small *ngIf="passwordField.errors?.['minlength']">password must be at least 6 characters.</small>
+        </div>
+
       </div>
-      <button type="submit" class="register-button">Register</button>
+      <!-- Confirm Password Field -->
+      <div class="form-group">
+        <label for="rePass">Confirm Password</label>
+        <input type="password" id="rePass" name="rePass" [(ngModel)]="rePass" required #rePassField="ngModel"
+          placeholder="Confirm your password" [ngClass]="{'animate__animated animate__pulse': animatePassword}"
+          (focus)="animateField('rePass')" (blur)="removeAnimation('rePass')" />
+  
+        <div *ngIf="rePassField.invalid && rePassField.touched" class="error-message">
+          <small *ngIf="rePassField.errors?.['required']">Please confirm your password.</small>
+        </div>
+        <div *ngIf="password !== rePass && rePassField.touched" class="error-message">
+          <small>Passwords do not match.</small>
+        </div>
+      </div>
+  
+      <button type="submit" class="register-button" [disabled]="registerForm.invalid">Register</button>
+
+
+      <div *ngIf="errorMessage" class="error-message">
+        <small>{{ errorMessage }}</small>
+      </div>
     </form>
+
     <p class="login-link">
       Already have an account? <a routerLink="/login">Login here</a>
     </p>
