@@ -4,6 +4,8 @@ import { CartService } from '../service/cart.service';
 import { FirebaseService } from '../firebase.service';
 import { Order } from '../model/order.model';
 import { Auth } from '@angular/fire/auth';
+import { NgForm } from '@angular/forms'
+
 
 @Component({
   selector: 'app-order',
@@ -38,7 +40,7 @@ export class OrderComponent implements OnInit {
     }
   }
 
-  submitOrder() {
+  submitOrder(form: NgForm) {
     const userId = this.auth.currentUser?.uid;
 
     if (!userId) {
@@ -64,4 +66,30 @@ export class OrderComponent implements OnInit {
       this.router.navigate(['/']);
     });
   }
+
+
+  // validators
+
+  formValid(): boolean {
+    return this.isNameValid(this.name) &&
+      this.isEmailValid(this.email) &&
+      this.street.length > 0 &&
+      this.isPhoneValid(this.phone);
+  }
+
+  isNameValid(name: string): boolean {
+    const namePattern = /^[а-яА-ЯёЁa-zA-Z\s]+$/;
+    return namePattern.test(name) && name.trim().length > 0;
+  }
+
+  isPhoneValid(phone: string): boolean {
+    const phonePattern = /^[0-9]+$/;
+    return phonePattern.test(phone) && phone.trim().length > 0; 
+  }
+
+  isEmailValid(email: string): boolean {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@(abv\.bg|gmail\.com)$/;
+    return emailPattern.test(email) && email.trim().length > 0;
+  }
+
 }
