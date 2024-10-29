@@ -6,14 +6,20 @@
     </div>
     <p><strong>Total Price: ${{ totalPrice.toFixed(2) }}</strong></p>
 
-    <form (ngSubmit)="submitOrder()">
+    <form #orderForm="ngForm" (ngSubmit)="submitOrder(orderForm)">
       <div>
         <label for="name">Имена:</label>
         <input id="name" [(ngModel)]="name" name="name" required />
+        <div *ngIf="!isNameValid(name) && name.length > 0" class="error-message">
+          <small>Името може да съдържа само букви и интервали.</small>
+        </div>
       </div>
       <div>
         <label for="email">Имейл адрес:</label>
         <input id="email" [(ngModel)]="email" name="email" type="email" required />
+        <div *ngIf="!isEmailValid(email) && email.length > 0" class="error-message">
+          <small>Имейл адресът трябва да или user@abv.bg или user@gmail.com.</small>
+        </div>
       </div>
       <div>
         <label for="street">Улица:</label>
@@ -22,8 +28,16 @@
       <div>
         <label for="phone">Телефонен номер:</label>
         <input id="phone" [(ngModel)]="phone" name="phone" required />
+        <div *ngIf="!isPhoneValid(phone) && phone.length > 0" class="error-message">
+          <small>Телефонният номер може да съдържа само цифри.</small>
+        </div>
       </div>
-      <button type="submit">Потвърди поръчката</button>
+      <button
+      type="submit" 
+      [ngClass]="{'order-button': true, 'active': formValid()}" 
+      [disabled]="!formValid()"> 
+      Потвърди поръчката
+    </button>
     </form>
   </div>
 
@@ -31,5 +45,3 @@
     <p>Your cart is empty. Add games before proceeding to order.</p>
   </ng-template>
 </div>
-
-  
