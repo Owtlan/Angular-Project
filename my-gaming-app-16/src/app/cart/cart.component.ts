@@ -32,7 +32,7 @@ export class CartComponent implements OnInit {
     if (this.userId) {
       this.cartService.clearCart(this.userId);
       this.cartItems = [];
-      this.totalPrice = 0;
+      this.totalPrice = 0; 
     }
   }
 
