@@ -13,7 +13,7 @@ import { CartComponent } from './cart/cart.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { PriceFilterComponent } from './price-filter/price-filter.component'; // Импортирайте вашия компонент
 import { redirectLoggedInToHome } from './redirect-logged-in.guard';
-
+import { redirectloggoutInToHome } from './redirect-logged-in.guard';
 
 
 const routes: Routes = [
@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [redirectLoggedInToHome] },
   { path: '', component: HomeComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'create', component: CreateComponent },
+  { path: 'create', component: CreateComponent, canActivate: [redirectloggoutInToHome] },
   { path: 'games/details/:id', component: GameDetailsComponent },
   { path: 'games/:category', component: GamesComponent },
   { path: 'games/:id/edit', component: EditGameComponent },
