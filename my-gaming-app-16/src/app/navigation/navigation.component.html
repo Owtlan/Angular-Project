@@ -31,14 +31,28 @@
             <li *ngIf="!isLoggedIn"><a routerLink="/register">Register</a></li>
             <li *ngIf="isLoggedIn"><a routerLink="/create">Sell Game</a></li>
             <li *ngIf="isLoggedIn"><a (click)="logout()" routerLink="/login">Logout</a></li>
-            <!-- <li *ngIf="isLoggedIn"><a routerLink="/cart"><i class="fa-solid fa-cart-shopping"></i></a></li> -->
 
 
-            <li *ngIf="isLoggedIn">
+            <li *ngIf="isLoggedIn" (mouseenter)="showCartPreview= true" (mouseleave)="showCartPreview = false">
                 <a routerLink="/cart">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span *ngIf="cartItemCount > 0" class="cart-count">{{ cartItemCount }}</span>
                 </a>
+
+
+                <!-- Cart preview on hover -->
+                <div class="cart-preview" *ngIf="showCartPreview && cartItems.length > 0">
+                    <div class="cart-preview-items">
+                        <div *ngFor="let item of cartItems" class="cart-preview-item">
+                            <img [src]="item.imageUrl" alt="{{ item.title }}" />
+                            <p>{{ item.title }}</p>
+                            <p>${{ item.price }}</p>
+                        </div>
+                    </div>
+                    <p><strong>Total: ${{ totalPrice.toFixed(2) }}</strong></p>
+                    <a routerLink="/cart" class="view-cart-btn">View Cart</a>
+                </div>
+
             </li>
             <li>
                 <a routerLink="/filter">filter</a>
