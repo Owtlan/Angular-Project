@@ -190,6 +190,7 @@
   border: 1px solid black;
   padding: 5px;
   margin-right: 5px;
+  justify-content: space-evenly;
 }
 
 .cart-preview-item img {
@@ -225,7 +226,11 @@
   background-color: #999;
 }
 
-
+.remove-item-btn{
+  border: none;
+  background-color: white;
+ cursor: pointer;
+}
 
 /* Adjustments for mobile responsiveness */
 @media (max-width: 768px) {
