@@ -12,10 +12,13 @@ import { OrderComponent } from './order/order.component';
 import { CartComponent } from './cart/cart.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { PriceFilterComponent } from './price-filter/price-filter.component'; // Импортирайте вашия компонент
+import { redirectLoggedInToHome } from './redirect-logged-in.guard';
+
+
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent, canActivate: [redirectLoggedInToHome] },
+  { path: 'login', component: LoginComponent, canActivate: [redirectLoggedInToHome] },
   { path: '', component: HomeComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'create', component: CreateComponent },
@@ -25,7 +28,7 @@ const routes: Routes = [
   { path: 'order', component: OrderComponent },
   { path: 'cart', component: CartComponent },
   { path: 'search', component: SearchResultsComponent },
-  { path: 'filter', component: PriceFilterComponent }, // Добавете маршрута
+  { path: 'filter', component: PriceFilterComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' }
 
 ];
