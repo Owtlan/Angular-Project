@@ -66,6 +66,25 @@ export class NavigationComponent {
   }
 
 
+  loadCartItems() {
+    if (this.currentUserId) {
+      this.cartItems = this.cartService.getCartItems(this.currentUserId);
+      this.totalPrice = this.cartService.getTotalPrice(this.currentUserId);
+    }
+  }
+
+
+  removeFromCart(index: number, event: Event){
+    event.stopPropagation();
+    if(this.currentUserId){
+      this.cartService.removeFromCart(index,this.currentUserId);
+      this.loadCartItems()
+    }
+  }
+
+
+
+
   updateCartData() {
     if (this.currentUserId) {
       this.cartItems = this.cartService.getCartItems(this.currentUserId);
