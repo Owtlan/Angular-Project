@@ -21,3 +21,19 @@ export const redirectLoggedInToHome: CanActivateFn = (): Observable<boolean> => 
         })
     )
 }
+
+
+export const redirectloggoutInToHome: CanActivateFn = (): Observable<boolean> => {
+    const auth = inject(Auth)
+    const router = inject(Router)
+
+    return authState(auth).pipe(
+        map(user => {
+            if (user) {
+                return true;
+            }
+            router.navigate(['/']); 
+            return false; 
+        })
+    )
+}
