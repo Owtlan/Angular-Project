@@ -43,11 +43,16 @@
                 <!-- Cart preview on hover -->
                 <div class="cart-preview" *ngIf="showCartPreview && cartItems.length > 0">
                     <div class="cart-preview-items">
-                        <div *ngFor="let item of cartItems" class="cart-preview-item">
+                        <div *ngFor="let item of cartItems; let i = index" class="cart-preview-item">
                             <img [src]="item.imageUrl" alt="{{ item.title }}" />
-                            <p>{{ item.title }}</p>
-                            <p>${{ item.price }}</p>
+                            <div class="cart-item-details">
+                                <p>{{ item.title }}</p>
+                                <p>${{ item.price }}</p>
+                            </div>
+                            <button class="remove-item-btn" (click)="removeFromCart(i, $event)">X</button>
+
                         </div>
+
                     </div>
                     <p><strong>Total: ${{ totalPrice.toFixed(2) }}</strong></p>
                     <a routerLink="/cart" class="view-cart-btn">View Cart</a>
