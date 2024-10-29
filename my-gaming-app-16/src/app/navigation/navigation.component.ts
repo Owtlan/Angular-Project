@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Auth, onAuthStateChanged, User } from '@angular/fire/auth';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CartService } from '../service/cart.service';
-import { FirebaseService } from '../firebase.service'; 
+import { FirebaseService } from '../firebase.service';
 import { Router } from '@angular/router';
 
 
@@ -34,12 +34,16 @@ export class NavigationComponent {
   currentUserId: string | null = null;
   searchQuery: string = '';
 
+  showCartPreview = false;
+  cartItems: any[] = [];
+  totalPrice: number = 0;
+
   constructor(private auth: Auth, private cartService: CartService, private firebaseService: FirebaseService, private router: Router) {
     onAuthStateChanged(this.auth, (user: User | null) => {
       if (user) {
         this.isLoggedIn = true;
         this.currentUserId = user.uid;
-        this.updateCartItemCount(); 
+        this.updateCartItemCount();
       } else {
         this.isLoggedIn = false;
         this.currentUserId = null;
@@ -49,14 +53,26 @@ export class NavigationComponent {
 
     this.cartService.cartItemCount$.subscribe(count => {
       this.cartItemCount = count;
+      this.updateCartData();
     });
 
 
     this.cartService.cartCleared$.subscribe(() => {
-      this.cartItemCount = 0; 
+      this.cartItemCount = 0;
+      this.cartItems = [];
+      this.totalPrice = 0;
       console.log('Cart cleared, item count set to 0');
     });
   }
+
+
+  updateCartData() {
+    if (this.currentUserId) {
+      this.cartItems = this.cartService.getCartItems(this.currentUserId);
+      this.totalPrice = this.cartService.getTotalPrice(this.currentUserId);
+    }
+  }
+
 
   updateCartItemCount() {
     if (this.currentUserId) {
@@ -78,7 +94,7 @@ export class NavigationComponent {
       this.router.navigate(['/search'], { queryParams: { query: this.searchQuery } });
 
       this.isSearchVisible = false;
-      this.searchQuery = ''; 
+      this.searchQuery = '';
     }
   }
 }
