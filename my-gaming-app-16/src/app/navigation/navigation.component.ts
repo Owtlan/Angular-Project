@@ -82,9 +82,6 @@ export class NavigationComponent {
     }
   }
 
-
-
-
   updateCartData() {
     if (this.currentUserId) {
       this.cartItems = this.cartService.getCartItems(this.currentUserId);
