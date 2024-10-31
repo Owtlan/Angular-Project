@@ -1,3 +1,19 @@
+<!--  1: go to cd my-gaming-app-16 -->
+
+<!-- 2: npm i -->
+
+<!-- 3: ng serve -->
+
+<!-- and if you have the problem read the error down -->
+
+
+
+
+
+
+
+
+
 <!-- if you have error like -->
 
 <!-- 
