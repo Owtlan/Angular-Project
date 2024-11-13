@@ -182,6 +182,7 @@
     transition: 0.5s;
     letter-spacing: 4px;
     overflow: hidden;
+    font-weight: bold;
  
   }
   .find-by-price:hover {
