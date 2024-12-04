@@ -25,6 +25,7 @@ import { OrderComponent } from './order/order.component';
 import { CartComponent } from './cart/cart.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { PriceFilterComponent } from './price-filter/price-filter.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -44,6 +45,7 @@ import { PriceFilterComponent } from './price-filter/price-filter.component';
     CartComponent,
     SearchResultsComponent,
     PriceFilterComponent,
+    FooterComponent,
 
   ],
   imports: [
