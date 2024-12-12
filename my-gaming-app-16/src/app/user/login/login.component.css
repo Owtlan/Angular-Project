@@ -92,7 +92,7 @@ input::placeholder {
     position: relative;
     z-index: 2;
     background: rgb(255 255 255 / 15%);;
-    padding: 20px;
+    padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
