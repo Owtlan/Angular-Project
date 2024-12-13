@@ -1,81 +1,76 @@
-
+/* Общи стилове за контейнера */
 .edit-game-container {
-    background-color: #1a1a1a;
-    padding: 20px;
+    background-color: #1b1b1b;
+    padding: 30px 30px 30px 30px; /* Падинг от всички страни */
     border-radius: 15px;
-    max-width: 600px;
+    min-width: 600px;
     margin: 0 auto;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.7);
     color: #fff;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
-.edit-game-container h2 {
-    text-align: center;
-    color: #ff3e00;
-    margin-bottom: 20px;
-    font-size: 28px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-}
+/* Падинг и маргин на формата */
 
-.edit-game-form .form-group {
-    margin-bottom: 15px;
-}
 
+/* Стилове за етикетите */
 .edit-game-form label {
     display: block;
     margin-bottom: 8px;
-    font-size: 14px;
-    color: #ccc;
+    font-size: 16px;
+    color: #bbb;
 }
 
+/* Стилове за полетата (input и textarea) */
 .edit-game-form input[type="text"], 
 .edit-game-form input[type="number"], 
 .edit-game-form textarea {
     width: 100%;
-    padding: 12px 0px;
-    border-radius: 8px;
-    background-color: #2c2c2c;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #333;
     border: 1px solid #444;
     color: #fff;
     font-size: 16px;
     outline: none;
-    transition: border-color 0.3s ease;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 15px;
+    box-sizing: border-box; /* Това гарантира, че падингът няма да наруши ширината на елемента */
 }
 
-.edit-game-form input[type="text"]:focus,
-.edit-game-form input[type="number"]:focus,
-.edit-game-form textarea:focus {
-    border-color: #ff3e00;
-}
-
-.edit-game-form textarea {
-    height: 120px;
-    resize: none;
-}
-
+/* Стилове за бутона */
 .save-button {
     width: 100%;
-    padding: 12px;
-    background-color: #ff3e00;
+    padding: 15px;
+    background-color: #ff4c00;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     color: white;
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
     text-transform: uppercase;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
 }
 
-.save-button:hover {
-    background-color: #e63600;
-    box-shadow: 0 4px 15px rgba(255, 62, 0, 0.5);
+/* Стилове за контейнера при зареждане */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #ff4c00;
 }
 
-.save-button:active {
-    background-color: #cc2f00;
+.loading-container p {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .loading-container p {
@@ -90,21 +85,26 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; 
+    height: 100vh;
     color: #ff3e00;
 }
 
 .loader {
     border: 8px solid #f3f3f3;
-    border-top: 8px solid #ff3e00; 
+    border-top: 8px solid #ff3e00;
     border-radius: 50%;
-    width: 50px; 
-    height: 50px; 
-    animation: spin 1s linear infinite; 
-    margin-bottom: 20px; 
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
