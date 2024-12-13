@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if (this.currentUserId) {
       this.cartService.addToCart(game, this.currentUserId);
       this.cartService.updateCartItemCount(this.currentUserId); 
-      alert(`${game.title} беше добавена в кошницата.`);
+      // alert(`${game.title} беше добавена в кошницата.`);
 
 
     } else {
