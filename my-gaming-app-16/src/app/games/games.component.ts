@@ -54,7 +54,7 @@ export class GamesComponent implements OnInit {
     if (this.currentUserId) {
       this.cartService.addToCart(game, this.currentUserId);
       this.cartService.updateCartItemCount(this.currentUserId); 
-      alert(`${game.title} беше добавена в количката.`);
+      // alert(`${game.title} беше добавена в количката.`);
     } else {
       alert('Трябва да сте логнат, за да добавите игра в количката.');
     }
