@@ -94,5 +94,7 @@ input::placeholder {
     text-decoration: underline;
 }
 .error-message{
-    background-color: blue;
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
 }
