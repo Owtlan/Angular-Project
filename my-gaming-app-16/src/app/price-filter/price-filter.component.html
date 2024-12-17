@@ -1,15 +1,9 @@
 <div class="filter-layout">
-
-
-    <!-- Games List Section -->
     <div class="filter-container">
         <h2>Filter by Price</h2>
-
         <div class="container-width">
 
-            
             <div class="section-slider">
-                <!-- Price Slider Section -->
                 <div class="price-slider">
                     <label for="minPrice">Min Price: {{ minPrice }} $</label>
                     <input type="range" id="minPrice" [(ngModel)]="minPrice" [min]="0" [max]="maxPriceLimit"
@@ -22,7 +16,7 @@
             </div>
 
             <div class="filter-game-section">
-    <!-- asd -->
+
                 <div *ngIf="filteredGames.length === 0">
                     <p>No games found in this price range.</p>
                 </div>
@@ -47,10 +41,6 @@
                 </div>
             </div>
 
-
-
         </div>
-
-
     </div>
 </div>
