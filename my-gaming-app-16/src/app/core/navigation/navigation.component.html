@@ -1,0 +1,64 @@
+<nav class="navbar">
+    <div class="container">
+        <div class="search">
+            <a class="logo" routerLink="/">GameZone Shop</a>
+
+            <div class="magnifying-glass">
+                <i class="fa-solid fa-magnifying-glass" (click)="toggleSearch()"></i>
+                <div [ngClass]="{'search-bar': true, 'show': isSearchVisible}">
+                    <input type="text" placeholder="Search games..." [(ngModel)]="searchQuery" />
+                    <button (click)="searchGames()">Search</button>
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a routerLink="/">Home</a></li>
+
+            <li class="dropdown">
+                <a routerLink="#games">Games-category</a>
+                <ul class="dropdown-menu">
+                    <li><a [routerLink]="['/games', 'Action']">Action</a></li>
+                    <li><a [routerLink]="['/games', 'Adventure']">Adventure</a></li>
+                    <li><a [routerLink]="['/games', 'Puzzle']">Puzzle</a></li>
+                    <li><a [routerLink]="['/games', 'RPG']">RPG</a></li>
+                </ul>
+            </li>
+
+            <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
+            <li *ngIf="!isLoggedIn"><a routerLink="/register">Register</a></li>
+            <li *ngIf="isLoggedIn"><a routerLink="/create">Sell Game</a></li>
+            <li *ngIf="isLoggedIn"><a (click)="logout()" routerLink="/login">Logout</a></li>
+
+
+            <li class="show-cart-items" *ngIf="isLoggedIn" (mouseenter)="showCartPreview= true"
+                (mouseleave)="showCartPreview=false">
+                <a routerLink="/cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span *ngIf="cartItemCount > 0" class="cart-count">{{ cartItemCount }}</span>
+                </a>
+
+                <div class="cart-preview" *ngIf="showCartPreview && cartItems.length > 0">
+                    <div class="cart-preview-items">
+                        <div *ngFor="let item of cartItems; let i = index" class="cart-preview-item">
+                            <a [routerLink]="['/games/details/', item.id]">
+                                <img [src]="item.imageUrl" alt="{{ item.title }}" />
+                                <div class="cart-item-details">
+                                    <p>{{ item.title }}</p>
+                                    <p>${{ item.price }}</p>
+                                </div>
+                            </a>
+                            <button class="remove-item-btn" (click)="removeFromCart(i, $event)">X</button>
+
+                        </div>
+                    </div>
+                    <p><strong>Total: ${{ totalPrice.toFixed(2) }}</strong></p>
+                    <a routerLink="/cart" class="view-cart-btn">View Cart</a>
+                </div>
+
+            </li>
+            <li>
+                <a routerLink="/filter">filter</a>
+            </li>
+        </ul>
+    </div>
