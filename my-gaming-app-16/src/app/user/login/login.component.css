@@ -96,3 +96,8 @@ input::placeholder {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
+.error-message{
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+}

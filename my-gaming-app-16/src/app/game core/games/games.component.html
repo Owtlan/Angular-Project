@@ -1,0 +1,30 @@
+<div class="games-container">
+  <div *ngIf="games$ | async as games; else noGames">
+    <h2>Games in category: {{ category }}</h2>
+    <ul class="games-list" *ngIf="games.length > 0; else noGames">
+      <li *ngFor="let game of games">
+        <div class="wrap-content">
+          <img [src]="game.imageUrl" alt="{{ game.title }}" width="200">
+          <h3>{{ game.title }}</h3>
+          <p>{{ game.description }}</p>
+          <p class="price">Price: ${{ game.price }}</p>
+
+        </div>
+        <div class="button-section">
+
+          <a [routerLink]="['/games/details', game.id]" class="details-button">Details</a>
+
+          <button *ngIf="isLoggedIn && !isGameCreatedByUser(game) && !isGamePurchased(game.id ?? '')"
+            (click)="addToCart(game)" class="add-to-cart-button">
+            Add to Cart
+          </button>
+        </div>
+
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noGames>
+    <p class="no-games">No games available in this category.</p>
+  </ng-template>
+</div>
