@@ -1,0 +1,278 @@
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.hero-section h1 {
+    z-index: 1;
+    font-size: 48px;
+    color: whitesmoke;
+    margin-bottom: 10px;
+    -webkit-text-stroke: 1px black;
+}
+
+.hero-section p {
+    z-index: 1;
+    font-size: 20px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    z-index: 1;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
+
+.featured-games {
+    margin-top: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.game-grid h2 {
+    font-size: 12px;
+    position: absolute;
+    top: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.game-grid {
+    max-width: 800px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 8px 20px;
+    padding: 20px;
+    padding-top: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.233);
+    background: #232a31a8;
+    border-radius: 5px;
+}
+
+.game-image {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.game-details {
+    flex-grow: 1;
+    text-align: initial;
+}
+
+.details-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.details-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.details-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.game-card {
+    background: #77889961;
+    border: 1px solid #ffffff7a;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.game-card:hover {
+    background-color: rgba(0, 0, 0, 0.363);
+    transition: ease-in 0.3s;
+}
+
+.video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.button-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.add-to-cart-button {
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.add-to-cart-button:hover {
+    background-color: #ff79b0;
+    transform: scale(1.05);
+}
+
+.add-to-cart-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+/* test */
+
+.find-by-price {
+    position: relative;
+    display: inline-block;
+    padding: 25px 30px;
+    margin: 40px 0px 80px 0;
+    color: #03e9f4;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    overflow: hidden;
+    font-weight: bold;
+ 
+  }
+  .find-by-price:hover {
+    background: #03e9f4;
+    color: #050801;
+    box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+      0 0 200px #03e9f4;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+  }
+  .find-by-price:nth-child(1) {
+    /* filter: hue-rotate(270deg); */
+    filter: hue-rotate(425deg);
+  }
+  .find-by-price:nth-child(2) {
+    filter: hue-rotate(110deg);
+  }
+  .find-by-price span {
+    position: absolute;
+    display: block;
+  }
+  .find-by-price span:nth-child(1) {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #03e9f4);
+    animation: animate1 1s linear infinite;
+  }
+  @keyframes animate1 {
+    0% {
+      left: -100%;
+    }
+    50%,
+    100% {
+      left: 100%;
+    }
+  }
+  .find-by-price span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #03e9f4);
+    animation: animate2 1s linear infinite;
+    animation-delay: 0.25s;
+  }
+  @keyframes animate2 {
+    0% {
+      top: -100%;
+    }
+    50%,
+    100% {
+      top: 100%;
+    }
+  }
+  .find-by-price span:nth-child(3) {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #03e9f4);
+    animation: animate3 1s linear infinite;
+    animation-delay: 0.5s;
+  }
+  @keyframes animate3 {
+    0% {
+      right: -100%;
+    }
+    50%,
+    100% {
+      right: 100%;
+    }
+  }
+  
+  a span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #03e9f4);
+    animation: animate4 1s linear infinite;
+    animation-delay: 0.75s;
+  }
+  @keyframes animate4 {
+    0% {
+      bottom: -100%;
+    }
+    50%,
+    100% {
+      bottom: 100%;
+    }
+  }
