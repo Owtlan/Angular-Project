@@ -1,0 +1,43 @@
+<div class="home-container animate__animated animate__fadeIn animate__delay-0.5s">
+    <header class="hero-section">
+        <div class="overlay"></div>
+        <h1>Welcome to GameZone</h1>
+        <p>Where Gamers Unite</p>
+
+        <video #videoBackground autoplay muted loop class="video-background">
+            <source class="vid-wallpaper" src="../../assets/death-knights-world-of-warcraft.1920x1080.mp4"
+                type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div>
+            <a class="find-by-price" routerLink="/filter">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Filter by price!
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+            </a>
+        </div>
+        <section class="featured-games">
+            <div class="game-grid">
+                <h2>OUR GAMES</h2>
+                <div class="game-card" *ngFor="let game of games">
+                    <img [src]="game.imageUrl" alt="{{ game.title }}" class="game-image" />
+                    <div class="game-details" [routerLink]="['/games/details', game.id]">
+                        <h3>{{ game.title }}</h3>
+                    </div>
+                    <div class="button-section">
+                        <a [routerLink]="['/games/details', game.id]" class="details-button">Details</a>
+
+                        <button *ngIf="isLoggedIn && !isGameCreatedByUser(game) && !isGamePurchased(game.id)"
+                            (click)="addToCart(game)" class="add-to-cart-button">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+</div>
